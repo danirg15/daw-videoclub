@@ -12,8 +12,31 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
+	<nav>
+		<br/>
+		<!-- TODO nav -->
+	</nav>
 
-	<h1>Hello</h1>
-	
+	<div class="container-fluid">
+		<div class="login-box">
+			<form action="/login" method="POST" class="form-horizontal text-left">
+				<div class="form-group">
+					<label for="user" class="col-sm-1 control-label">Usuario</label>
+					<input type="text" name="user" required>
+				</div>
+
+				<div class="form-group">
+					<label for="password" class="col-sm-1 control-label">Contraseña</label>				
+					<input type="password" name="password" required>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-1">
+						<button type="submit" class="btn btn-primary">Acceder</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
