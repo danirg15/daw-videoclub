@@ -1,4 +1,5 @@
-$(function() {/** Stars **/
+$(function() {
+	/** Stars **/
 	let enableStar = function($ele, isHalf) {
 		if(!isHalf) {
 			$ele.toggleClass("fa-star", true).toggleClass("fa-star-half-o fa-star-o", false);
@@ -11,10 +12,11 @@ $(function() {/** Stars **/
 		$ele.toggleClass("fa-star-o", true).toggleClass("fa-star fa-star-half-o", false);
 	}
 
-	$(".star-group").on("mouseleave", function() {
+	$(".star-selectable").on("mouseleave", function() {
 		// Apply existing range
-		let rankn = $(this).data("rank");
-		$("i.fa").each(function() {
+		let $this = $(this);
+		let rankn = $this.data("rank");
+		$this.children("i.fa").each(function() {
 			let $this = $(this);
 			let n = $this.data("star");
 			if(n == rankn - 0.5) {
@@ -27,10 +29,10 @@ $(function() {/** Stars **/
 		});
 	});
 
-	$starList = $(".fa-star, .fa-star-half-o, .fa-star-o");
+	$starList = $(".star-selectable > .fa-star, .star-selectable > .fa-star-half-o, .star-selectable > .fa-star-o");
 	$starList.on("mousemove", function(e) {
 		let $this = $(this);
-		let isHalf = (e.pageX - this.offsetLeft) < $this.width() / 2;
+		let isHalf = (e.pageX - this.getBoundingClientRect().left) < $this.width() / 2;
 
 		enableStar($this, isHalf);
 		$this.prevAll().each(function() { enableStar($(this), false); });
@@ -40,10 +42,9 @@ $(function() {/** Stars **/
 	$starList.on("click", function(e) {
 		let $this = $(this);
 		let nrank = $this.data("star");
-		if((e.pageX - this.offsetLeft) < $this.width() / 2) {
+		if((e.pageX - this.getBoundingClientRect().left) < $this.width() / 2) {
 			nrank += 0.5;
 		}
-		console.log(nrank);
 
 		$this.parent().data("rank", nrank)
 	})
