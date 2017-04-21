@@ -1,0 +1,5 @@
+target/
+.idea/workspace.xml
+.idea/kotlinc.xml
+.idea/inspectionProfiles
+.idea/dictionaries
