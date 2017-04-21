@@ -8,9 +8,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class GreetingController {
 
-    @RequestMapping ("/greeting" )
+    @RequestMapping ("/list" )
     public ModelAndView greeting() {
-        return new ModelAndView( "greeting" ).addObject( "name", "World");
+        return new ModelAndView( "lista" ).addObject( "name", "World");
     }
 
 }

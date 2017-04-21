@@ -1,5 +1,10 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head th:replace="partials/head :: head">
+    <title></title>
+</head>
 <body>
-<p>Hello <span th:text="#{welcome}">Friend</span>!</p>
+<div layout:fragment="content">
+    <p>Hello <span th:text="#{welcome}">Friend</span>!</p>
+</div>
 </body>
 </html>
