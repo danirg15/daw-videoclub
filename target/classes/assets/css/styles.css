@@ -12,3 +12,11 @@ p {
 .card-block {
     padding: 1.25rem 1.25rem 0.25rem 1.25rem;
 }
+
+.star-selectable {
+	cursor: pointer;
+}
+
+.fa-star, .fa-star-half-o {
+	color: #fed031;
+}
