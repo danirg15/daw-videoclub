@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<head th:replace="partials/head :: head">
-	<title></title>
-</head>
+<head th:replace="layout :: head"></head>
 <body>
 	<div class="container">
 		<br/><br/>
@@ -63,5 +61,9 @@
 		</div><!-- card-deck -->
 
 	</div> <!-- container -->
+
+	<footer th:replace="layout :: footer">
+		<!-- List footer -->
+	</footer>
 </body>
 </html>
