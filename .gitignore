@@ -3,4 +3,5 @@ target/
 .idea/kotlinc.xml
 .idea/inspectionProfiles
 .idea/dictionaries
-.idea/libraries/
+.idea/libraries
+*.iml
