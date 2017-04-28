@@ -14,15 +14,18 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+    private boolean isAdmin;
 
     protected User() {
 
     }
 
-    public User(String username, String firstName, String lastName) {
+    public User(String username, String firstName, String lastName, String email, boolean isAdmin) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
+        this.isAdmin = isAdmin;
     }
 
     public long getId() {
