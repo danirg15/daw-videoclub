@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MoviesController {
     @Autowired
-    MovieRepository movieRepository;
+    private MovieRepository movieRepository;
 
 
     @RequestMapping (value = "/movies", method = RequestMethod.GET)
@@ -27,12 +27,25 @@ public class MoviesController {
 
     @RequestMapping(value = "/movies/{id}/show", method = RequestMethod.GET)
     public ModelAndView showMovie(@PathVariable("id") long id) {
-        //TODO: Mostrar una pelicula
-        return null;
+
+        Movie movie = this.movieRepository.findById(id);
+
+        if(movie != null) {
+            return new ModelAndView("movie").addObject("movie", movie);
+        }
+
+        return new ModelAndView("error");
     }
 
     @RequestMapping(value = "/movies/{id}/edit", method = RequestMethod.GET)
     public ModelAndView editMovie(@PathVariable("id") long id) {
+
+        Movie movie = this.movieRepository.findById(id);
+
+        if(movie != null) {
+
+        }
+
         //TODO: Formulario para editar pelicula
         return null;
     }

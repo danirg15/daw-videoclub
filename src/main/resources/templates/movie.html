@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="layout :: head"></head>
+<body>
+
+	<section th:replace="layout :: nav-bar"></section>
+
+
+	<div class="container">
+
+		<div class="jumbotron">
+			<h3 th:text="${movie.title}"></h3>
+			<h6 th:text="${movie.director}"></h6>
+
+			<div class="row">
+				<div class="col-md-5">
+					<img th:src="@{'/img/' + ${movie.poster_url}}"/>
+				</div>
+				<div class="col-md-7">
+					<section>
+						<p class="text-justify lead" th:text="${movie.plot}"></p>
+					</section>
+
+					<hr style="border-top: 1.5px solid #dedede;"/>
+
+					<section>
+						<div class="row">
+							<div class="col-md-4"><b>Género</b></div>
+							<div class="col-md-8" th:text="${movie.genre}"></div>
+						</div>
+						<div class="row">
+							<div class="col-md-4"><b>Actores</b></div>
+							<div class="col-md-8" th:text="${movie.actors}"></div>
+						</div>
+						<div class="row">
+							<div class="col-md-4"><b>Anio</b></div>
+							<div class="col-md-8" th:text="${movie.year}"></div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4"><b>Valoración</b></div>
+							<div class="col-md-8">
+								<i class="fa fa-star fa-lg" aria-hidden="true"></i>
+								<i class="fa fa-star-half-o fa-lg" aria-hidden="true"></i>
+								<i class="fa fa-star-o fa-lg" aria-hidden="true"></i>
+								<i class="fa fa-star-o fa-lg" aria-hidden="true"></i>
+								<i class="fa fa-star-o fa-lg" aria-hidden="true"></i>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4"><b>Tu valoración</b></div>
+							<div class="col-md-8 star-selectable" data-rank="">
+								<i class="fa fa-star-o fa-lg" aria-hidden="true" data-star="1"></i>
+								<i class="fa fa-star-o fa-lg" aria-hidden="true" data-star="2"></i>
+								<i class="fa fa-star-o fa-lg" aria-hidden="true" data-star="3"></i>
+								<i class="fa fa-star-o fa-lg" aria-hidden="true" data-star="4"></i>
+								<i class="fa fa-star-o fa-lg" aria-hidden="true" data-star="5"></i>
+							</div>
+						</div>
+
+					</section>
+				</div>
+
+			</div> <!-- row	 -->
+		</div> <!-- jumbotron -->
+
+	</div> <!-- container -->
+	
+</body>
+</html>
