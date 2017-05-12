@@ -25,7 +25,7 @@ public class UsersController {
             System.out.println(user.toString());
         }
         catch (Exception ex) {
-            return "User not found";
+            return "Usuario no econtrado";
         }
         return user.toString();
     }
