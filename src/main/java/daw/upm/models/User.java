@@ -1,6 +1,12 @@
 package daw.upm.models;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.persistence.*;
+import java.util.Arrays;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -14,18 +20,26 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-    private boolean isAdmin;
+    private String password; //(bcrypt)
+
+    @ElementCollection (fetch = FetchType.EAGER)
+    private List<GrantedAuthority> roles;
 
     protected User() {
 
     }
 
-    public User(String username, String firstName, String lastName, String email, boolean isAdmin) {
+    public User(String username, String password, String firstName, String lastName, String email, List<GrantedAuthority> roles) {
+
         this.username = username;
+        this.password = new BCryptPasswordEncoder().encode(password);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.isAdmin = isAdmin;
+
+        /*GrantedAuthority[] roles = {new SimpleGrantedAuthority(isAdmin ? "ROLE_ADMIN" : "ROLE_USER")};
+        this.roles = Arrays.asList(roles);*/
+        this.roles = roles;
     }
 
     public long getId() {
@@ -68,14 +82,21 @@ public class User {
         this.email = email;
     }
 
+    public String getPasswordHash() { return password; }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    public List<GrantedAuthority> getRoles() {
+        return roles;
     }
 }
