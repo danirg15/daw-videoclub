@@ -4,11 +4,18 @@ import daw.upm.models.Movie;
 import daw.upm.models.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class MoviesController {
@@ -18,16 +25,12 @@ public class MoviesController {
 
     @RequestMapping (value = "/movies", method = RequestMethod.GET)
     public ModelAndView showMovies() {
-        //TODO: Mostrar todas las peliculas
-
-        System.out.print(movieRepository.findAll().toString());
-
-        return null;
+        Iterable<Movie> movies = movieRepository.findAll();
+        return new ModelAndView("movies").addObject("movies", movies);
     }
 
     @RequestMapping(value = "/movies/{id}/show", method = RequestMethod.GET)
     public ModelAndView showMovie(@PathVariable("id") long id) {
-
         Movie movie = this.movieRepository.findById(id);
 
         if(movie != null) {
@@ -61,21 +64,33 @@ public class MoviesController {
     }
 
     @RequestMapping(value = "/movies/create", method = RequestMethod.GET)
-    public ModelAndView createMovie() {
-        //TODO: Formulario para crear pelicula
-        return null;
+    public String createMovie(Movie movie) {
+        return "movie-form";
     }
 
 
     @RequestMapping(value = "/movies/store", method = RequestMethod.POST)
-    public ModelAndView storeMovie(@ModelAttribute Movie movie) {
+    public String storeMovie(@Valid Movie movie, BindingResult bindingResult) {
+
+
+        if (bindingResult.hasErrors()) {
+
+            List<ObjectError> errors =  bindingResult.getAllErrors();
+
+            for (ObjectError error : errors) {
+                System.out.println(errors.toString());
+            }
+
+
+            return "movie-form";
+        }
 
         //TODO: Crear pelicula
 
         System.out.println(movie.toString());
 
 
-        return null;
+        return "redirect:/movies";
     }
 
 

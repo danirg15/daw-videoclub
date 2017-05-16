@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="layout :: head"></head>
+<body>
+
+<section th:replace="layout :: nav-bar"></section>
+
+
+
+	<div class="container">
+
+		<br/><br/>
+
+
+		<div class="row">
+			<div class="col-md-3" th:each="movie : ${movies}">
+
+				<a th:href="@{'/movies/' + ${movie.id} + '/show'}">
+
+					<div class="card">
+						<img class="card-img-top img-fluid" th:src="@{'/img/' + ${movie.poster_url}}" alt="Card image cap"/>
+						<div class="card-block">
+							<h5 class="card-title" th:text="${movie.title}"></h5>
+						</div>
+						<div class="card-footer">
+							<i class="fa fa-star fa-lg" style="color: #fed031" aria-hidden="true"></i>
+							<i class="fa fa-star fa-lg" style="color: #fed031" aria-hidden="true"></i>
+							<i class="fa fa-star fa-lg" style="color: #fed031" aria-hidden="true"></i>
+							<i class="fa fa-star-half-o fa-lg" style="color: #fed031" aria-hidden="true"></i>
+							<i class="fa fa-star-o fa-lg" aria-hidden="true"></i>
+						</div>
+					</div>
+
+				</a>
+
+			</div> <!-- col -->
+		</div> <!-- row -->
+
+	</div> <!-- container -->
+
+</body>
+</html>

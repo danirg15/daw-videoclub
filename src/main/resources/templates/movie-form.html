@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="layout :: head"></head>
+<body>
+
+	<section th:replace="layout :: nav-bar"></section>
+
+
+	<div class="container">
+
+		<h1>Nueva Película</h1>
+		<form th:action="@{/movies/store}" th:object="${movie}" method="POST">
+
+			<input type="text" th:field="*{title}" />
+			<input type="text" th:field="*{genre}" />
+			<input type="text" th:field="*{director}" />
+			<input type="text" th:field="*{actors}" />
+
+			<span th:if="${#fields.hasErrors('director')}" th:errors="*{director}">Title error</span>
+			<span th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}">rating</span>
+			<span th:if="${#fields.hasErrors('year')}" th:errors="*{year}">year</span>
+
+			<input type="submit" value="Submit" />
+
+		</form>
+
+	</div> <!-- container -->
+	
+</body>
+</html>

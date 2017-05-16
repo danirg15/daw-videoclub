@@ -1,6 +1,10 @@
 package daw.upm.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
+
 
 @Entity
 @Table(name = "movies")
@@ -10,18 +14,31 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NotNull
     private String title;
+
+    @Min(1900)
     private int year;
-    private String date;
+
+    @NotNull
     private String genre;
+    @NotNull
     private String director;
+    @NotNull
     private String actors;
+
+    @Null
+    private String date;
+    @Null
     private String plot;
+    @Null
     private String poster_url;
+    @Null
     private double rating;
+    @Null
     private String box_office;
 
-    protected Movie() {
+    public Movie() {
 
     }
 
