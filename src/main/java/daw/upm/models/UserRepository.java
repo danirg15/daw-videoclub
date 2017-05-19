@@ -15,6 +15,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
     // sirva valores antiguos.
 
     Iterable<User> findAll();
+    long count();
 }
 
 

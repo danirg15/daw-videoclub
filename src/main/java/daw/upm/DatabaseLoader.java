@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
+import java.util.List;
 
 @Component
 public class DatabaseLoader {
@@ -17,12 +18,14 @@ public class DatabaseLoader {
 
     @PostConstruct
     private void initDatabase() {
-        // User #1: user:user, rol "USER"
-        GrantedAuthority[] userRoles = { new SimpleGrantedAuthority("ROLE_USER") };
-        userRepository.save(new User("user", "user", "User", "user", "user@localhost.dev", Arrays.asList(userRoles)));
+        if(userRepository.count() == 0) {
+            // User #1: user:user, rol "USER"
+            GrantedAuthority[] userRoles = {new SimpleGrantedAuthority("ROLE_USER")};
+            userRepository.save(new User("user", "user", "User", "user", "user@localhost.dev", Arrays.asList(userRoles)));
 
-        // User #2: root:root, rol "USER/ADMIN"
-        GrantedAuthority[] adminRoles = { new SimpleGrantedAuthority("ROLE_USER"), new SimpleGrantedAuthority("ROLE_ADMIN") };
-        userRepository.save(new User("root","root", "Root", "Root", "root@localhost.dev", Arrays.asList(adminRoles)));
+            // User #2: root:root, rol "USER/ADMIN"
+            GrantedAuthority[] adminRoles = {new SimpleGrantedAuthority("ROLE_USER"), new SimpleGrantedAuthority("ROLE_ADMIN")};
+            userRepository.save(new User("root", "root", "Root", "Root", "root@localhost.dev", Arrays.asList(adminRoles)));
+        }
     }
 }

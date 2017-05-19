@@ -6,13 +6,11 @@ import org.springframework.data.repository.CrudRepository;
 public interface MovieRepository extends CrudRepository<Movie, Long> {
     @Cacheable
     public Movie findById(long id);
-
-    @Cacheable
-    public Iterable<Movie> findAll();
-
     @Cacheable
     public Movie findByTitle(String title);
 
+
+    public Iterable<Movie> findAll();
 }
 
 
