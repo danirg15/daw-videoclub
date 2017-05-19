@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ListController {
-    //@Secured({"ROLE_USER", "ROLE_ADMIN"})
+    @Secured({"ROLE_USER"})
     @RequestMapping ("/list")
     public ModelAndView showList() {
         return new ModelAndView( "lista" ).addObject( "name", "World");
