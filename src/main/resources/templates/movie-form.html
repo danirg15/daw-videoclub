@@ -8,21 +8,62 @@
 
 	<div class="container">
 
-		<h1>Nueva Película</h1>
+		<!--<h1>Nueva Película</h1>-->
+		<!--<form th:action="@{/movies/store}" th:object="${movie}" method="POST">-->
+			<!--Titulo-->
+			<!--<input type="text" th:field="*{title}" />-->
+			<!--<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>-->
+
+			<!--Genero-->
+			<!--<input type="text" th:field="*{genre}" />-->
+			<!--<span th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></span>-->
+
+			<!--Director-->
+			<!--<input type="text" th:field="*{director}" />-->
+			<!--<span th:if="${#fields.hasErrors('director')}" th:errors="*{director}"></span>-->
+
+			<!--Actores-->
+			<!--<input type="text" th:field="*{actors}" />-->
+			<!--<span th:if="${#fields.hasErrors('actors')}" th:errors="*{actors}"></span>-->
+
+			<!--Rating-->
+			<!--<input type="text" th:field="*{rating}" />-->
+			<!--<span th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}"></span>-->
+
+			<!--<input type="submit" value="Submit" />-->
+
+		<!--</form>-->
+
+		<!--Flash message http://viralpatel.net/blogs/spring-mvc-flash-attribute-example/ -->
+
+
 		<form th:action="@{/movies/store}" th:object="${movie}" method="POST">
+			<fieldset>
+				<legend>Nueva Película</legend>
 
-			<input type="text" th:field="*{title}" />
-			<input type="text" th:field="*{genre}" />
-			<input type="text" th:field="*{director}" />
-			<input type="text" th:field="*{actors}" />
+				<div class="form-group" th:classappend="${#fields.hasErrors('title')} ? has-danger">
+					<label>Título</label>
+					<input type="text" th:field="*{title}" class="form-control" th:classappend="${#fields.hasErrors('title')} ? form-control-danger" placeholder="Título"/>
+					<div class="form-control-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+				</div>
 
-			<span th:if="${#fields.hasErrors('director')}" th:errors="*{director}">Title error</span>
-			<span th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}">rating</span>
-			<span th:if="${#fields.hasErrors('year')}" th:errors="*{year}">year</span>
+				<div class="form-group" th:classappend="${#fields.hasErrors('genre')} ? has-danger">
+					<label>Género</label>
+					<input type="text" th:field="*{genre}" class="form-control" th:classappend="${#fields.hasErrors('genre')} ? form-control-danger" placeholder="Género"/>
+					<div class="form-control-feedback" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></div>
+				</div>
 
-			<input type="submit" value="Submit" />
 
+
+
+
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</fieldset>
 		</form>
+
+
+
+
 
 	</div> <!-- container -->
 	

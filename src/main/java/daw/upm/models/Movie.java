@@ -1,5 +1,7 @@
 package daw.upm.models;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -14,27 +16,33 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @NotNull
+    @NotEmpty
     private String title;
 
     @Min(1900)
     private int year;
 
-    @NotNull
+    @NotEmpty
     private String genre;
-    @NotNull
+
+    @NotEmpty
     private String director;
-    @NotNull
+
+    @NotEmpty
     private String actors;
+
+    @NotEmpty
+    private String plot;
 
     @Null
     private String date;
-    @Null
-    private String plot;
+
     @Null
     private String poster_url;
+
     @Null
     private double rating;
+
     @Null
     private String box_office;
 
