@@ -1,17 +1,16 @@
 package daw.upm.models;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.repository.CrudRepository;
 
-/**
- * Created by dani on 28/04/2017.
- */
 public interface MovieRepository extends CrudRepository<Movie, Long> {
-
-
+    @Cacheable
     public Movie findById(long id);
 
+    @Cacheable
     public Iterable<Movie> findAll();
 
+    @Cacheable
     public Movie findByTitle(String title);
 
 }
