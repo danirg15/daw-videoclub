@@ -20,7 +20,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/").permitAll();
        http.authorizeRequests().anyRequest().permitAll(); //authenticated();
         http.formLogin().loginPage("/login").usernameParameter("username")
-                .passwordParameter("password").defaultSuccessUrl("/home")
+                .passwordParameter("password").defaultSuccessUrl("/list")
                 .failureUrl("/login?error").permitAll();
         http.logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout")
                 .permitAll();
