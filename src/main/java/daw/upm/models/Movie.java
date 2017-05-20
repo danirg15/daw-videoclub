@@ -1,8 +1,11 @@
 package daw.upm.models;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.jboss.logging.annotations.Message;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -16,35 +19,42 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NotNull
     @NotEmpty
     private String title;
 
+    @NotNull
     @Min(1900)
     private int year;
 
+    @NotNull
     @NotEmpty
     private String genre;
 
+    @NotNull
     @NotEmpty
     private String director;
 
+    @NotNull
     @NotEmpty
     private String actors;
 
+    @NotNull
     @NotEmpty
     private String plot;
 
-    @Null
     private String date;
 
-    @Null
+    @NotNull
+    @NotEmpty
     private String poster_url;
 
-    @Null
+    @NumberFormat(style = NumberFormat.Style.NUMBER)
+    @Min(0)
+    @Max(5)
     private double rating;
 
-    @Null
-    private String box_office;
+    private double box_office;
 
     public Movie() {
 
@@ -59,7 +69,7 @@ public class Movie {
                  String plot,
                  String poster_url,
                  double rating,
-                 String box_office) {
+                 double box_office) {
 
         this.title = title;
         this.year = year;
@@ -154,11 +164,11 @@ public class Movie {
         this.rating = rating;
     }
 
-    public String getBox_office() {
+    public double getBox_office() {
         return box_office;
     }
 
-    public void setBox_office(String box_office) {
+    public void setBox_office(double box_office) {
         this.box_office = box_office;
     }
 

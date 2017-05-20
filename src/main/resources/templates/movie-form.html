@@ -8,58 +8,83 @@
 
 	<div class="container">
 
-		<!--<h1>Nueva Película</h1>-->
-		<!--<form th:action="@{/movies/store}" th:object="${movie}" method="POST">-->
-			<!--Titulo-->
-			<!--<input type="text" th:field="*{title}" />-->
-			<!--<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>-->
-
-			<!--Genero-->
-			<!--<input type="text" th:field="*{genre}" />-->
-			<!--<span th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></span>-->
-
-			<!--Director-->
-			<!--<input type="text" th:field="*{director}" />-->
-			<!--<span th:if="${#fields.hasErrors('director')}" th:errors="*{director}"></span>-->
-
-			<!--Actores-->
-			<!--<input type="text" th:field="*{actors}" />-->
-			<!--<span th:if="${#fields.hasErrors('actors')}" th:errors="*{actors}"></span>-->
-
-			<!--Rating-->
-			<!--<input type="text" th:field="*{rating}" />-->
-			<!--<span th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}"></span>-->
-
-			<!--<input type="submit" value="Submit" />-->
-
-		<!--</form>-->
 
 		<!--Flash message http://viralpatel.net/blogs/spring-mvc-flash-attribute-example/ -->
+		<div class="row">
+			<div class="col-md-10 offset-md-1">
+
+				<form th:action="@{/movies/store}" th:object="${movie}" method="POST">
+					<fieldset>
+						<legend>Nueva Película</legend>
+
+						<div class="form-group" th:classappend="${#fields.hasErrors('title')} ? has-danger">
+							<label>Título</label>
+							<input type="text" th:field="*{title}" class="form-control" th:classappend="${#fields.hasErrors('title')} ? form-control-danger" placeholder="Título"/>
+							<div class="form-control-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+						</div>
+
+						<div class="form-group" th:classappend="${#fields.hasErrors('year')} ? has-danger">
+							<label>Año</label>
+							<input type="number" th:field="*{year}" class="form-control" th:classappend="${#fields.hasErrors('year')} ? form-control-danger" placeholder="Año"/>
+							<div class="form-control-feedback" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></div>
+						</div>
+
+						<div class="form-group" th:classappend="${#fields.hasErrors('genre')} ? has-danger">
+							<label>Género</label>
+							<input type="text" th:field="*{genre}" class="form-control" th:classappend="${#fields.hasErrors('genre')} ? form-control-danger" placeholder="Género"/>
+							<div class="form-control-feedback" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></div>
+						</div>
+
+						<div class="form-group" th:classappend="${#fields.hasErrors('director')} ? has-danger">
+							<label>Director</label>
+							<input type="text" th:field="*{director}" class="form-control" th:classappend="${#fields.hasErrors('director')} ? form-control-danger" placeholder="Director"/>
+							<div class="form-control-feedback" th:if="${#fields.hasErrors('director')}" th:errors="*{director}"></div>
+						</div>
+
+						<div class="form-group" th:classappend="${#fields.hasErrors('actors')} ? has-danger">
+							<label>Actores</label>
+							<input type="text" th:field="*{actors}" class="form-control" th:classappend="${#fields.hasErrors('actors')} ? form-control-danger" placeholder="Actores"/>
+							<div class="form-control-feedback" th:if="${#fields.hasErrors('actors')}" th:errors="*{actors}"></div>
+						</div>
+
+						<div class="form-group" th:classappend="${#fields.hasErrors('plot')} ? has-danger">
+							<label>Argumento</label>
+							<textarea type="text" th:field="*{plot}" class="form-control" th:classappend="${#fields.hasErrors('plot')} ? form-control-danger" placeholder="Argumento"></textarea>
+							<div class="form-control-feedback" th:if="${#fields.hasErrors('plot')}" th:errors="*{plot}"></div>
+						</div>
+
+						<div class="form-group" th:classappend="${#fields.hasErrors('poster_url')} ? has-danger">
+							<label>Portada URL</label>
+							<input type="text" th:field="*{poster_url}" class="form-control" th:classappend="${#fields.hasErrors('poster_url')} ? form-control-danger" placeholder="http://images/..."/>
+							<div class="form-control-feedback" th:if="${#fields.hasErrors('poster_url')}" th:errors="*{poster_url}"></div>
+						</div>
+
+						<div class="form-group" th:classappend="${#fields.hasErrors('rating')} ? has-danger">
+							<label>Valoración</label>
+							<input type="number" th:field="*{rating}" class="form-control" th:classappend="${#fields.hasErrors('rating')} ? form-control-danger" placeholder="Valoración"/>
+							<div class="form-control-feedback" th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}"></div>
+						</div>
+
+						<div class="form-group" th:classappend="${#fields.hasErrors('rating')} ? has-danger">
+							<label>Recaudación</label>
+							<div class="input-group">
+								<span class="input-group-addon" id="sizing-addon2">&euro;</span>
+								<input type="text" class="form-control" aria-describedby="sizing-addon2"/>
+							</div>
+						</div>
 
 
-		<form th:action="@{/movies/store}" th:object="${movie}" method="POST">
-			<fieldset>
-				<legend>Nueva Película</legend>
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</fieldset>
+				</form>
 
-				<div class="form-group" th:classappend="${#fields.hasErrors('title')} ? has-danger">
-					<label>Título</label>
-					<input type="text" th:field="*{title}" class="form-control" th:classappend="${#fields.hasErrors('title')} ? form-control-danger" placeholder="Título"/>
-					<div class="form-control-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
-				</div>
 
-				<div class="form-group" th:classappend="${#fields.hasErrors('genre')} ? has-danger">
-					<label>Género</label>
-					<input type="text" th:field="*{genre}" class="form-control" th:classappend="${#fields.hasErrors('genre')} ? form-control-danger" placeholder="Género"/>
-					<div class="form-control-feedback" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></div>
-				</div>
+			</div>
+
+		</div>
 
 
 
-
-
-				<button type="submit" class="btn btn-primary">Submit</button>
-			</fieldset>
-		</form>
 
 
 

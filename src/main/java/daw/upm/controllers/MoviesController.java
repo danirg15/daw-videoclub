@@ -72,23 +72,11 @@ public class MoviesController {
     @RequestMapping(value = "/movies/store", method = RequestMethod.POST)
     public String storeMovie(@Valid Movie movie, BindingResult bindingResult) {
 
-
         if (bindingResult.hasErrors()) {
-
-            List<ObjectError> errors =  bindingResult.getAllErrors();
-
-            for (ObjectError error : errors) {
-                System.out.println(errors.toString());
-            }
-
-
             return "movie-form";
         }
 
-        //TODO: Crear pelicula
-
-        System.out.println(movie.toString());
-
+        this.movieRepository.save(movie);
 
         return "redirect:/movies";
     }
