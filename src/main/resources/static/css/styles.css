@@ -17,17 +17,29 @@ p {
 	cursor: pointer;
 }
 
-.fa-star, .fa-star-half-o {
+
+.ion-ios-star, .ion-ios-star-half {
 	color: #fed031;
 }
 
+.ion-ios-star-outline {
+    color: #444;
+}
 
 a {
-    color: #444;
+    color: white;
 }
 
 a:hover, a:visited, a:link, a:active
 {
     text-decoration: none;
-    color: #444;
+    color: white;
+}
+
+.icon {
+    font-size: 1.4rem;
+}
+
+.icon-lg {
+    font-size: 1.9rem;
 }

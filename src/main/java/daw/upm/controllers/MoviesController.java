@@ -4,18 +4,13 @@ import daw.upm.models.Movie;
 import daw.upm.models.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class MoviesController {
@@ -42,38 +37,40 @@ public class MoviesController {
 
     @RequestMapping(value = "/movies/{id}/edit", method = RequestMethod.GET)
     public ModelAndView editMovie(@PathVariable("id") long id) {
-
         Movie movie = this.movieRepository.findById(id);
 
         if(movie != null) {
-
+            return new ModelAndView("edit-movie").addObject("movie", movie);
         }
 
-        //TODO: Formulario para editar pelicula
-        return null;
+        return new ModelAndView("error");
     }
 
     @RequestMapping(value = "/movies/{id}/update", method = RequestMethod.POST)
-    public ModelAndView updateMovie(@PathVariable("id") long id, @ModelAttribute Movie movie) {
+    public String updateMovie(@PathVariable("id") long id, @Valid Movie movie, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "edit-movie";
+        }
 
-        //TODO: Actualizar pelicula
+        if(this.movieRepository.findById(id) == null) {
+            return "error";
+        }
 
-        System.out.println(movie.toString());
+        this.movieRepository.save(movie);
 
-        return null;
+        return "redirect:/movies";
     }
 
     @RequestMapping(value = "/movies/create", method = RequestMethod.GET)
     public String createMovie(Movie movie) {
-        return "movie-form";
+        return "create-movie";
     }
 
 
     @RequestMapping(value = "/movies/store", method = RequestMethod.POST)
     public String storeMovie(@Valid Movie movie, BindingResult bindingResult) {
-
         if (bindingResult.hasErrors()) {
-            return "movie-form";
+            return "create-movie";
         }
 
         this.movieRepository.save(movie);
@@ -83,9 +80,14 @@ public class MoviesController {
 
 
     @RequestMapping(value = "/movies/{id}/remove", method = RequestMethod.POST)
-    public ModelAndView removeMovie(@PathVariable("id") long id) {
-        //TODO: Eliminar pelicula
-        return null;
+    public String removeMovie(@PathVariable("id") long id) {
+        if(this.movieRepository.findById(id) == null) {
+            return "error";
+        }
+
+        this.movieRepository.delete(id);
+
+        return "redirect:/movies";
     }
 
 

@@ -49,6 +49,10 @@ public class Movie {
     @NotEmpty
     private String poster_url;
 
+    @NotNull
+    @NotEmpty
+    private String content_url;
+
     @NumberFormat(style = NumberFormat.Style.NUMBER)
     @Min(0)
     @Max(5)
@@ -108,14 +112,6 @@ public class Movie {
         this.year = year;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public String getGenre() {
         return genre;
     }
@@ -148,12 +144,28 @@ public class Movie {
         this.plot = plot;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public String getPoster_url() {
         return poster_url;
     }
 
     public void setPoster_url(String poster_url) {
         this.poster_url = poster_url;
+    }
+
+    public String getContent_url() {
+        return content_url;
+    }
+
+    public void setContent_url(String content_url) {
+        this.content_url = content_url;
     }
 
     public double getRating() {
@@ -178,14 +190,15 @@ public class Movie {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", year=" + year +
-                ", date='" + date + '\'' +
                 ", genre='" + genre + '\'' +
                 ", director='" + director + '\'' +
                 ", actors='" + actors + '\'' +
                 ", plot='" + plot + '\'' +
+                ", date='" + date + '\'' +
                 ", poster_url='" + poster_url + '\'' +
+                ", content_url='" + content_url + '\'' +
                 ", rating=" + rating +
-                ", box_office='" + box_office + '\'' +
+                ", box_office=" + box_office +
                 '}';
     }
 }

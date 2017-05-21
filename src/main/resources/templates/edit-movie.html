@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="layout :: head"></head>
+<body>
+
+<section th:replace="layout :: nav-bar"></section>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+
+            <form th:action="@{ '/movies/' + ${movie.id} + '/update'}" th:object="${movie}" method="POST">
+                <fieldset>
+                    <legend>Editar Película</legend>
+
+                    <div th:replace="movie-form :: form"></div>
+
+                </fieldset>
+            </form>
+
+        </div>
+
+    </div>
+
+</div> <!-- container -->
+
+</body>
+</html>
