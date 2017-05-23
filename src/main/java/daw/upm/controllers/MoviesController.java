@@ -91,5 +91,16 @@ public class MoviesController {
     }
 
 
+    @RequestMapping(value = "/movies/{id}/display", method = RequestMethod.GET)
+    public ModelAndView displayMovie(@PathVariable("id") long id) {
+        Movie movie = this.movieRepository.findById(id);
+
+        if(movie != null) {
+            return new ModelAndView("display-movie").addObject("movie", movie);
+        }
+
+        return new ModelAndView("error");
+    }
+
 
 }
