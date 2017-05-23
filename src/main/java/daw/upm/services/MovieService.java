@@ -12,4 +12,10 @@ import org.springframework.stereotype.Service;
 public class MovieService {
 
 
+    //TODO
+    public void find(String keyword) {
+        //HTTP GET API
+        //return movie Object con campos rellenos que autocompletaran el formulario
+    }
+
 }

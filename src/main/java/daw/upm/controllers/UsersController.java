@@ -1,15 +1,16 @@
 package daw.upm.controllers;
 
+import daw.upm.models.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import daw.upm.models.User;
 import daw.upm.models.UserRepository;
+
+import javax.validation.Valid;
 
 @Controller
 public class UsersController {
@@ -43,6 +44,40 @@ public class UsersController {
             return "User not found";
         }
         return users.toString();
+    }
+
+
+
+    @RequestMapping(value = "/users/{id}/edit", method = RequestMethod.GET)
+    public ModelAndView editUser(@PathVariable("id") long id) {
+        //TODO
+        return null;
+    }
+
+    @RequestMapping(value = "/users/{id}/update", method = RequestMethod.POST)
+    public String updateUser(@PathVariable("id") long id, @Valid User user, BindingResult bindingResult) {
+        //TODO
+        return null;
+    }
+
+    @RequestMapping(value = "/users/create", method = RequestMethod.GET)
+    public String createUser(User user) {
+        //TODO
+        return null;
+    }
+
+
+    @RequestMapping(value = "/users/store", method = RequestMethod.POST)
+    public String storeUser(@Valid User user, BindingResult bindingResult) {
+        //TODO
+        return null;
+    }
+
+
+    @RequestMapping(value = "/users/{id}/remove", method = RequestMethod.POST)
+    public String removeUser(@PathVariable("id") long id) {
+        //TODO
+        return null;
     }
 
 }
