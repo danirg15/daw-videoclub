@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="layout :: head"></head>
+<body>
+
+<section th:replace="layout :: nav-bar"></section>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+
+            <form th:action="@{/users/store}" th:object="${user}" method="POST">
+                <fieldset>
+                    <legend>Nuevo Usuario</legend>
+
+                    <div th:replace="users/user-form :: form"></div>
+
+                </fieldset>
+            </form>
+
+        </div>
+
+    </div>
+
+</div> <!-- container -->
+
+
+<footer th:replace="layout :: footer"></footer>
+
+</body>
+</html>

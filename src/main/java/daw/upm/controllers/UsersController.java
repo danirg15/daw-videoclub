@@ -32,26 +32,23 @@ public class UsersController {
     }
 
 
-    @RequestMapping ("/users")
-    @ResponseBody
-    public String getUsers() {
-        Iterable<User> users = null;
-        try {
-            users = userRepository.findAll();
-            System.out.println(users.toString());
-        }
-        catch (Exception ex) {
-            return "User not found";
-        }
-        return users.toString();
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public ModelAndView showUsers() {
+        Iterable<User> users = userRepository.findAll();
+        return new ModelAndView("users/users").addObject("users", users);
     }
 
 
 
     @RequestMapping(value = "/users/{id}/edit", method = RequestMethod.GET)
     public ModelAndView editUser(@PathVariable("id") long id) {
-        //TODO
-        return null;
+        User user = this.userRepository.findById(id);
+
+        if(user != null) {
+            return new ModelAndView("users/edit-user").addObject("user", user);
+        }
+
+        return new ModelAndView("error");
     }
 
     @RequestMapping(value = "/users/{id}/update", method = RequestMethod.POST)
@@ -62,8 +59,7 @@ public class UsersController {
 
     @RequestMapping(value = "/users/create", method = RequestMethod.GET)
     public String createUser(User user) {
-        //TODO
-        return null;
+        return "users/create-user";
     }
 
 
