@@ -5,8 +5,3 @@
 - Boton en footer para ir hacia atras
 - Mejorar diseno
 - Accion cerrar sesion
-- Integración con API:
-    IMDB acaba de pasar a ser privado hace unos días, por lo que no es una opción. Entonces
-    vamos directamente a usar rotten tomatoes, ya esta hecha la peticion de keys de acceso.
-    *Las llamadas a la API es obligarda a hacerce desde el servidor, asi lo exige el enunciado.
-
