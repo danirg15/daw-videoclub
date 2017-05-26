@@ -44,7 +44,7 @@ public class MovieService {
      * @param movie_id
      */
     public static void getDetails(int movie_id) {
-        String endpoint = base_uri + String.format("/movie/%s?api_key=%s&language=%s&query=%s", movie_id, api_key, lang);
+        String endpoint = base_uri + String.format("/movie/%s?api_key=%s&language=%s", movie_id, api_key, lang);
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> result = restTemplate.exchange(endpoint, HttpMethod.GET, buildHeaders(), String.class);
         System.out.println(result);

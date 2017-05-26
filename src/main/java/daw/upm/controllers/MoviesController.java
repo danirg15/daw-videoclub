@@ -21,7 +21,7 @@ public class MoviesController {
     @RequestMapping (value = "/movies", method = RequestMethod.GET)
     public ModelAndView showMovies() {
         Iterable<Movie> movies = movieRepository.findAll();
-        return new ModelAndView("movies/movies").addObject("movies", movies);
+        return new ModelAndView("/movies/movies").addObject("movies", movies);
     }
 
     @RequestMapping(value = "/movies/{id}/show", method = RequestMethod.GET)
@@ -29,7 +29,7 @@ public class MoviesController {
         Movie movie = this.movieRepository.findById(id);
 
         if(movie != null) {
-            return new ModelAndView("movies/movie").addObject("movie", movie);
+            return new ModelAndView("/movies/movie").addObject("movie", movie);
         }
 
         return new ModelAndView("error");
@@ -40,7 +40,7 @@ public class MoviesController {
         Movie movie = this.movieRepository.findById(id);
 
         if(movie != null) {
-            return new ModelAndView("movies/edit-movie").addObject("movie", movie);
+            return new ModelAndView("/movies/edit-movie").addObject("movie", movie);
         }
 
         return new ModelAndView("error");
@@ -49,7 +49,7 @@ public class MoviesController {
     @RequestMapping(value = "/movies/{id}/update", method = RequestMethod.POST)
     public String updateMovie(@PathVariable("id") long id, @Valid Movie movie, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "movies/edit-movie";
+            return "/movies/edit-movie";
         }
 
         if(this.movieRepository.findById(id) == null) {
@@ -58,7 +58,7 @@ public class MoviesController {
 
         this.movieRepository.save(movie);
 
-        return "redirect:movies/movies";
+        return "redirect:/movies";
     }
 
     @RequestMapping(value = "/movies/create", method = RequestMethod.GET)
@@ -70,16 +70,16 @@ public class MoviesController {
     @RequestMapping(value = "/movies/store", method = RequestMethod.POST)
     public String storeMovie(@Valid Movie movie, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "movies/create-movie";
+            return "/movies/create-movie";
         }
 
         this.movieRepository.save(movie);
 
-        return "redirect:movies/movies";
+        return "redirect:/movies";
     }
 
 
-    @RequestMapping(value = "/movies/{id}/remove", method = RequestMethod.POST)
+    @RequestMapping(value = "/movies/{id}/remove", method = RequestMethod.GET)
     public String removeMovie(@PathVariable("id") long id) {
         if(this.movieRepository.findById(id) == null) {
             return "error";
@@ -87,7 +87,7 @@ public class MoviesController {
 
         this.movieRepository.delete(id);
 
-        return "redirect:movies/movies";
+        return "redirect:/movies";
     }
 
 
@@ -96,7 +96,7 @@ public class MoviesController {
         Movie movie = this.movieRepository.findById(id);
 
         if(movie != null) {
-            return new ModelAndView("movies/display-movie").addObject("movie", movie);
+            return new ModelAndView("/movies/display-movie").addObject("movie", movie);
         }
 
         return new ModelAndView("error");

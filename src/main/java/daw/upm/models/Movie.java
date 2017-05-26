@@ -39,6 +39,7 @@ public class Movie {
     @NotEmpty
     private String actors;
 
+    @Column(columnDefinition="TEXT")
     @NotNull
     @NotEmpty
     private String plot;
