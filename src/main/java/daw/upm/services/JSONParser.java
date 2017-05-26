@@ -10,21 +10,21 @@ import java.util.Map;
 
 public class JSONParser {
 
-//Ejemplo:
-//
-//    String json = "{\"title\":\"pi\"}";
-//
-//    HashMap<String, String> fieldMapping = new HashMap<String, String>();
-//    fieldMapping.put("title", "titulo");
-//
-//    System.out.println( MovieService.parseJson(json, fieldMapping) );
-//
-//    Output {titulo=pi}
+    //Ejemplo:
+    //
+    //    String json = "{\"title\":\"pi\"}";
+    //
+    //    HashMap<String, String> fieldMapping = new HashMap<String, String>();
+    //    fieldMapping.put("title", "titulo");
+    //
+    //    System.out.println( MovieService.parseJson(json, fieldMapping) );
+    //
+    //    Output {titulo=pi}
 
 
     /**
      * Convierte un string json a HashMap con el mappping de claves especificado.
-     * Si no se especifica el HashMap mantiene las claves originales del json.
+     * Si no se especifica el mapping mantiene las claves originales del json.
      * @param json
      * @param fieldMapping
      * @return
