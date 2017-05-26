@@ -1,3 +1,5 @@
+"use strict";
+
 $(function() {
 	/** Stars **/
 	let enableStar = function($ele, isHalf) {
@@ -6,11 +8,11 @@ $(function() {
 		} else {
 			$ele.toggleClass("fa-star-half-o", true).toggleClass("fa-star fa-star-o", false);
 		}
-	}
+	};
 
 	let disableStar = function($ele) {
 		$ele.toggleClass("fa-star-o", true).toggleClass("fa-star fa-star-half-o", false);
-	}
+	};
 
 	$(".star-selectable").on("mouseleave", function() {
 		// Apply existing range
@@ -29,7 +31,7 @@ $(function() {
 		});
 	});
 
-	$starList = $(".star-selectable > .fa-star, .star-selectable > .fa-star-half-o, .star-selectable > .fa-star-o");
+	let $starList = $(".star-selectable > .fa-star, .star-selectable > .fa-star-half-o, .star-selectable > .fa-star-o");
 	$starList.on("mousemove", function(e) {
 		let $this = $(this);
 		let isHalf = (e.pageX - this.getBoundingClientRect().left) < $this.width() / 2;
@@ -46,6 +48,16 @@ $(function() {
 			nrank += 0.5;
 		}
 
-		$this.parent().data("rank", nrank)
-	})
+		$this.parent().data("rank", nrank);
+
+		// TODO: Subir rank al servidor
+	});
+
+    /**
+	 * Search box
+     */
+    let $searchBox = $("#movie-search-name");
+    $("#movie-search-go").on("click", function() {
+		let searchName = $searchBox.val();
+	});
 });
