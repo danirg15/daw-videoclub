@@ -1,0 +1,13 @@
+
+
+<section th:fragment="go-back">
+    <div onclick="goBack()" class="go-back">
+        <i style="font-size: 2.3rem;" class="ion-ios-arrow-thin-left align-middle"></i>
+        <span class="align-middle" style="font-size: 1.2rem;">Atras</span>
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</section>

@@ -1,17 +1,12 @@
 package daw.upm.services;
 
-import daw.upm.models.Movie;
-import daw.upm.models.MovieRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 
-/**
- * Created by dani on 08/05/2017.
- */
+
 @Service
 public class MovieService {
 
@@ -30,6 +25,7 @@ public class MovieService {
 
     /**
      * Buscar peliculas por nombre
+     *
      * @param keyword
      */
     public static void find(String keyword) {
@@ -41,6 +37,7 @@ public class MovieService {
 
     /**
      * Obtener todos los detalles de una pelicula
+     *
      * @param movie_id
      */
     public static void getDetails(int movie_id) {
@@ -49,5 +46,8 @@ public class MovieService {
         ResponseEntity<String> result = restTemplate.exchange(endpoint, HttpMethod.GET, buildHeaders(), String.class);
         System.out.println(result);
     }
+
+
+
 
 }
