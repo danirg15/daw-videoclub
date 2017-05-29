@@ -8,7 +8,8 @@ public interface MovieRepository extends CrudRepository<Movie, Long> {
     public Movie findById(long id);
     @Cacheable
     public Movie findByTitle(String title);
-
+    @Cacheable
+    public Iterable<Movie> findByTitleContaining(String titlePortion);
 
     public Iterable<Movie> findAll();
 }

@@ -4,50 +4,13 @@
 <body>
 
 <section th:replace="layout :: nav-bar"></section>
-
-
-
 	<div class="container">
-
 		<section th:replace="movies/search-box :: search-box"></section>
-
 
 		<br/><br/>
 
-
-		<div class="row">
-			<div class="col-md-3" th:each="movie : ${movies}">
-
-				<a th:href="@{'/movies/' + ${movie.id} + '/show'}">
-
-					<div class="card">
-						<img class="card-img-top img-fluid" th:src="${movie.poster_url}" alt="Card image cap"/>
-						<div class="card-block">
-							<h5 class="card-title" th:text="${movie.title}"></h5>
-						</div>
-						<div class="card-footer">
-							<i class="icon ion-ios-star" aria-hidden="true"></i>
-							<i class="icon ion-ios-star" aria-hidden="true"></i>
-							<i class="icon ion-ios-star" aria-hidden="true"></i>
-							<i class="icon ion-ios-star-half" aria-hidden="true"></i>
-							<i class="icon ion-ios-star-outline" aria-hidden="true"></i>
-						</div>
-					</div>
-
-				</a>
-
-			</div> <!-- col -->
-		</div> <!-- row -->
-
-
-
+		<div th:replace="movies/movie-list :: movie-list"></div>
 		<footer th:replace="layout :: footer"></footer>
-		
-
 	</div> <!-- container -->
-
-
-
-
 </body>
 </html>

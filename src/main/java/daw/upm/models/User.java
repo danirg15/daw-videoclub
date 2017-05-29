@@ -38,9 +38,6 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-
-        /*GrantedAuthority[] roles = {new SimpleGrantedAuthority(isAdmin ? "ROLE_ADMIN" : "ROLE_USER")};
-        this.roles = Arrays.asList(roles);*/
         this.roles = roles;
     }
 

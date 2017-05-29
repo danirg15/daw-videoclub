@@ -59,5 +59,21 @@ $(function() {
     let $searchBox = $("#movie-search-name");
     $("#movie-search-go").on("click", function() {
 		let searchName = $searchBox.val();
+		if(!searchName) {
+            alertify.error("Debes introducir un nombre de película a buscar");
+        }
+	});
+
+    $searchBox.on("keyup", function(ev) {
+		let movieName = $searchBox.val().trim();
+		if(movieName) {
+            $.ajax({
+                url: "/movies/search",
+                method: "GET",
+                data: {partialTitle: movieName}
+            }).done(function (reply) {
+                $("#movie-list").html(reply);
+            });
+        }
 	});
 });

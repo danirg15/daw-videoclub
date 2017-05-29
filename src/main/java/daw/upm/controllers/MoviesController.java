@@ -8,9 +8,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 
 @Controller
 public class MoviesController {
@@ -102,5 +104,9 @@ public class MoviesController {
         return new ModelAndView("error");
     }
 
-
+    @RequestMapping(value="/movies/search", method = RequestMethod.GET)
+    public ModelAndView searchMovies(@PathParam("partialTitle") String partialTitle) {
+        Iterable<Movie> movies = this.movieRepository.findByTitleContaining(partialTitle);
+        return new ModelAndView("/movies/movie-list").addObject("movies", movies);
+    }
 }
