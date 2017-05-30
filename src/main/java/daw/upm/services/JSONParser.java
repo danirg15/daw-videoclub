@@ -29,18 +29,19 @@ public class JSONParser {
      * @param fieldMapping
      * @return
      */
-    public static HashMap<String, String> parseJson(String json, HashMap<String, String> fieldMapping) {
+    public static HashMap<String, Object> parseJson(String json, HashMap<String, String> fieldMapping) {
         try {
             //JSON parsing
-            HashMap<String, String> jsonMap = new HashMap<String, String>();
-            ObjectMapper objectMapper = new ObjectMapper();
-            jsonMap = objectMapper.readValue(json, new TypeReference<HashMap<String, String>>() {
-            });
+            ObjectMapper mapper = new ObjectMapper();
+            TypeReference<HashMap<String,Object>> typeRef
+                    = new TypeReference<HashMap<String,Object>>() {};
+            HashMap<String,Object> jsonMap = mapper.readValue(json, typeRef);
+
 
             //Mapping
-            HashMap<String, String> result = new HashMap<String, String>();
+            HashMap<String, Object> result = new HashMap<String, Object>();
 
-            if (fieldMapping.isEmpty()) {
+            if (fieldMapping == null || fieldMapping.isEmpty()) {
                 result = jsonMap;
             }
             else {
