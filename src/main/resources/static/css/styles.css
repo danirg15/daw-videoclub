@@ -67,3 +67,8 @@ a:hover, a:visited, a:link, a:active
 .go-back:hover {
     cursor: pointer;
 }
+
+.exit-link {
+    color: #f83b3b !important;
+    font-weight: bold;
+}

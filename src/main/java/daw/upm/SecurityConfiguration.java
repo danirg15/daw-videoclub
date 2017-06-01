@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
@@ -22,7 +23,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.formLogin().loginPage("/login").usernameParameter("username")
                 .passwordParameter("password").defaultSuccessUrl("/movies")
                 .failureUrl("/login?error").permitAll();
-        http.logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout")
+        http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout")
                 .permitAll();
     }
 
