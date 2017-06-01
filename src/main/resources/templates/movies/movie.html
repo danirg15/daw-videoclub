@@ -67,8 +67,7 @@
 			</div> <!-- row	 -->
 		</div> <!-- jumbotron -->
 
-
-		<div class="row">
+		<div class="row" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
 			<div class="col-md-4">
 				<a th:href="@{ '/movies/' + ${movie.id} + '/display'}" class="btn btn-success btn-lg btn-block">
 					<i class="icon-lg ion-ios-monitor-outline align-middle"  style="font-size: 1.9rem;"></i>
@@ -85,6 +84,15 @@
 				<a th:href="@{ '/movies/' + ${movie.id} + '/remove'}" class="btn btn-danger btn-lg btn-block">
 					<i class="icon-lg ion-ios-close-outline align-middle" style="font-size: 1.9rem;"></i>
 					Eliminar
+				</a>
+			</div>
+		</div>
+
+		<div class="row justify-content-center" th:unless="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+			<div class="col-md-8">
+				<a th:href="@{ '/movies/' + ${movie.id} + '/display'}" class="btn btn-success btn-lg btn-block">
+					<i class="icon-lg ion-ios-monitor-outline align-middle"  style="font-size: 1.9rem;"></i>
+					&nbsp;&nbsp;Ver película
 				</a>
 			</div>
 		</div>
