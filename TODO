@@ -5,8 +5,9 @@
 - Accion cerrar sesion
 - Procesar crear usuarios (UserController)
 	+ contraseña/repetir contraseña (comentado, descomentar?)
-- Rellenar BBDD
+- Rellenar BBDD con peliculas
 - thymyleaf error page mapping
+- Cambiar campo "plot" a tipo TEXT
 
 // Datos
 Balanceador: haproxy
