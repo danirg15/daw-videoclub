@@ -1,8 +1,6 @@
 - Oculatar acciones segun rol [hecho para ver película, falta admin de usuarios cuando se implemente]
 - Administrar usuarios, (solo para por rol admin)
 - JS guardar valoracion de pelicula y mostrar media
-- Mejorar diseno
-- Accion cerrar sesion
 - Procesar crear usuarios (UserController)
 	+ contraseña/repetir contraseña (comentado, descomentar?)
 - Rellenar BBDD con peliculas
