@@ -19,7 +19,7 @@ public class UsersController {
     private UserRepository userRepository;
 
     @Secured({"ROLE_USER"})
-    @RequestMapping ("/user/{id}")
+    @RequestMapping ("/users/{id}")
     @ResponseBody
     public String getUser(@PathVariable("id") long id) {
         User user = null;
