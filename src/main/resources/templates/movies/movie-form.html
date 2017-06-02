@@ -2,19 +2,19 @@
 
 		<div class="form-group" th:classappend="${#fields.hasErrors('title')} ? has-danger">
 			<label>Título</label>
-			<input type="text" th:field="*{title}" class="form-control" th:classappend="${#fields.hasErrors('title')} ? form-control-danger" placeholder="Título"/>
+			<input type="text" th:field="*{title}" id="title" class="form-control" th:classappend="${#fields.hasErrors('title')} ? form-control-danger" placeholder="Título"/>
 			<div class="form-control-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
 		</div>
 
 		<div class="form-group" th:classappend="${#fields.hasErrors('year')} ? has-danger">
 			<label>Año</label>
-			<input type="number" th:field="*{year}" class="form-control" th:classappend="${#fields.hasErrors('year')} ? form-control-danger" placeholder="Año"/>
+			<input type="number" th:field="*{year}" id="year" class="form-control" th:classappend="${#fields.hasErrors('year')} ? form-control-danger" placeholder="Año"/>
 			<div class="form-control-feedback" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></div>
 		</div>
 
 		<div class="form-group" th:classappend="${#fields.hasErrors('genre')} ? has-danger">
 			<label>Género</label>
-			<input type="text" th:field="*{genre}" class="form-control" th:classappend="${#fields.hasErrors('genre')} ? form-control-danger" placeholder="Género"/>
+			<input type="text" th:field="*{genre}" id="genres" class="form-control" th:classappend="${#fields.hasErrors('genre')} ? form-control-danger" placeholder="Género"/>
 			<div class="form-control-feedback" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></div>
 		</div>
 
@@ -32,13 +32,13 @@
 
 		<div class="form-group" th:classappend="${#fields.hasErrors('plot')} ? has-danger">
 			<label>Argumento</label>
-			<textarea type="text" th:field="*{plot}" class="form-control" th:classappend="${#fields.hasErrors('plot')} ? form-control-danger" placeholder="Argumento"></textarea>
+			<textarea type="text" rows="5" th:field="*{plot}" id="plot" class="form-control" th:classappend="${#fields.hasErrors('plot')} ? form-control-danger" placeholder="Argumento"></textarea>
 			<div class="form-control-feedback" th:if="${#fields.hasErrors('plot')}" th:errors="*{plot}"></div>
 		</div>
 
 		<div class="form-group" th:classappend="${#fields.hasErrors('poster_url')} ? has-danger">
 			<label>Portada URL</label>
-			<input type="text" th:field="*{poster_url}" class="form-control" th:classappend="${#fields.hasErrors('poster_url')} ? form-control-danger" placeholder="http://images/..."/>
+			<input type="text" th:field="*{poster_url}" id="poster_url" class="form-control" th:classappend="${#fields.hasErrors('poster_url')} ? form-control-danger" placeholder="http://images/..."/>
 			<div class="form-control-feedback" th:if="${#fields.hasErrors('poster_url')}" th:errors="*{poster_url}"></div>
 		</div>
 
@@ -50,15 +50,17 @@
 
 		<div class="form-group" th:classappend="${#fields.hasErrors('rating')} ? has-danger">
 			<label>Valoración</label>
-			<input type="text" th:field="*{rating}" class="form-control" th:classappend="${#fields.hasErrors('rating')} ? form-control-danger" placeholder="Valoración"/>
+			<input type="text" th:field="*{rating}" id="rating" class="form-control" th:classappend="${#fields.hasErrors('rating')} ? form-control-danger" placeholder="Valoración"/>
 			<div class="form-control-feedback" th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}"></div>
 		</div>
 
-		<div class="form-group" th:classappend="${#fields.hasErrors('rating')} ? has-danger">
+
+		<div class="form-group" th:classappend="${#fields.hasErrors('box_office')} ? has-danger">
 			<label>Recaudación</label>
 			<div class="input-group">
-				<span class="input-group-addon" id="sizing-addon2">&euro;</span>
-				<input type="text" class="form-control" aria-describedby="sizing-addon2"/>
+				<span class="input-group-addon" id="basic-addon1">&euro;</span>
+				<input type="text" th:field="*{box_office}" id="box_office" class="form-control" th:classappend="${#fields.hasErrors('box_office')} ? form-control-danger" placeholder=""/>
+				<div class="form-control-feedback" th:if="${#fields.hasErrors('box_office')}" th:errors="*{box_office}"></div>
 			</div>
 		</div>
 

@@ -5,10 +5,7 @@ import org.jboss.logging.annotations.Message;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
+import javax.validation.constraints.*;
 
 
 @Entity
@@ -55,8 +52,7 @@ public class Movie {
     private String content_url;
 
     @NumberFormat(style = NumberFormat.Style.NUMBER)
-    @Min(0)
-    @Max(5)
+    @DecimalMax("5.0") @DecimalMin("0.0")
     private double rating;
 
     private double box_office;

@@ -120,13 +120,12 @@ public class MoviesController {
     @Secured({"ROLE_USER"})
     @RequestMapping(value="/movies/autocomplete", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody String autocompleteMovie(@RequestParam("title") String title) {
-
-        String json = MovieService.find(title);
-        HashMap<String, Object> data = JSONParser.parseJson(json, null);
-        ArrayList results = (ArrayList) data.get("results");
-
-        HashMap<String, Object> a1 = (HashMap<String, Object>) results.get(0);
-
-        return MovieService.getDetails((Integer) a1.get("id"));
+        String json = MovieService.movieDetails(title);
+        if(json == null) {
+            return "";
+        }
+        else {
+            return json;
+        }
     }
 }

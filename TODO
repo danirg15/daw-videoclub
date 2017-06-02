@@ -6,6 +6,8 @@
 - Rellenar BBDD con peliculas
 - thymyleaf error page mapping
 - Cambiar campo "plot" a tipo TEXT
-
+- Crear usuarios
+- Boton de crear pelicula
+- Indicar los campos obligatorios
 // Datos
 Balanceador: haproxy

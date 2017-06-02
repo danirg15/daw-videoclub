@@ -5,6 +5,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -49,6 +50,21 @@ public class MovieService {
         return  result.getBody();
     }
 
+
+    public static String movieDetails(String title) {
+        String json = MovieService.find(title);
+        HashMap<String, Object> data = JSONParser.parseJson(json, null);
+
+        if(data.containsKey("results")) {
+            ArrayList results = (ArrayList) data.get("results");
+
+            if(results.size() > 0) {
+                HashMap<String, Object> entry = (HashMap<String, Object>) results.get(0);
+                return MovieService.getDetails((Integer) entry.get("id"));
+            }
+        }
+        return null;
+    }
 
 
 
