@@ -18,14 +18,14 @@
 
 	<section th:if="${param.error}">
 		<div class="alert alert-dismissible alert-danger" role="alert">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			<p class="text-center">¡Usuario o contraseña erróneos!</p>
+			<!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+			<div class="text-center">¡Usuario o contraseña erróneos!</div>
 		</div>
 	</section>
 	<section th:if="${param.logout}">
-		<div class="alert alert-dismissible alert-danger" role="alert">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			<p class="text-center">Sesión cerrada correctamente</p>
+		<div class="alert alert-dismissible alert-info" role="alert">
+			<!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+			<div class="text-center">Sesión cerrada correctamente</div>
 		</div>
 	</section>
 
@@ -41,12 +41,12 @@
 			<form name="f" th:action="@{/login}" method="POST">
 				<div class="input-container">
 					<input type="text" name="username" required="required"/>
-					<label for="Username">Usuario</label>
+					<label for="username">Usuario</label>
 					<div class="bar"></div>
 				</div>
 				<div class="input-container">
 					<input type="password" name="password" required="required"/>
-					<label for="Password">Contraseña</label>
+					<label for="password">Contraseña</label>
 					<div class="bar"></div>
 				</div>
 				<div class="button-container">

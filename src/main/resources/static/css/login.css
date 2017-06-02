@@ -451,3 +451,15 @@ h1 {
         opacity: 0;
     }
 }
+
+.alert-info {
+    background-color: #d9edf7 !important;
+    border-color: #bcdff1 !important;
+    color: #31708f !important;
+}
+
+.alert-danger {
+    background-color: #f2dede !important;
+    border-color: #ebcccc !important;
+    color: #a94442 !important;
+}
