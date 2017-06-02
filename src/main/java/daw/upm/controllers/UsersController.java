@@ -54,10 +54,31 @@ public class UsersController {
     }
 
     @Secured({"ROLE_ADMIN"})
-    @RequestMapping(value = "/users/{id}/update", method = RequestMethod.POST)
-    public String updateUser(@PathVariable("id") long id, @Valid User user, BindingResult bindingResult) {
-        //TODO
-        return null;
+    @RequestMapping(value = "/users/{id}/edit", method = RequestMethod.POST)
+    public String updateUser(@PathVariable("id") long id, @Valid User updatedUser, BindingResult bindingResult) {
+        User user = this.userRepository.findById(id);
+        if(user == null) {
+            return "redirect:/users/users";
+        }
+
+        if(updatedUser.getEmail() != "" && !updatedUser.getEmail().equals(user.getEmail())) {
+            user.setEmail(updatedUser.getEmail());
+        }
+
+        if(updatedUser.getFirstName() != "" && !updatedUser.getFirstName().equals(user.getFirstName())) {
+            user.setFirstName(updatedUser.getFirstName());
+        }
+
+        if(updatedUser.getLastName() != "" && !updatedUser.getLastName().equals(user.getLastName())) {
+            user.setLastName(updatedUser.getLastName());
+        }
+
+        if(updatedUser.getPasswordHash() != "") {
+            user.setPasswordHash(updatedUser.getPasswordHash());
+        }
+
+        this.userRepository.save(user);
+        return "redirect:/users";
     }
 
     @Secured({"ROLE_ADMIN"})
@@ -67,7 +88,7 @@ public class UsersController {
     }
 
     @Secured({"ROLE_ADMIN"})
-    @RequestMapping(value = "/users/store", method = RequestMethod.POST)
+    @RequestMapping(value = "/users/create", method = RequestMethod.POST)
     public String storeUser(@Valid User user, BindingResult bindingResult) {
         //TODO
         return null;

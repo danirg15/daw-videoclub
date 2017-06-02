@@ -43,7 +43,7 @@ public class User {
     public User(String username, String password, String firstName, String lastName, String email, List<GrantedAuthority> roles) {
 
         this.username = username;
-        this.password = new BCryptPasswordEncoder().encode(password);
+        this.password = password != "" ? new BCryptPasswordEncoder().encode(password) : "";
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -91,6 +91,14 @@ public class User {
     }
 
     public String getPasswordHash() { return password; }
+    public void setPasswordHash(String hash) { this.password = hash;}
+
+    public String getPassword() {return "";}
+    public void setPassword(String npassword) {
+        if(npassword != "") {
+            password = new BCryptPasswordEncoder().encode(npassword);
+        }
+    }
 
     @Override
     public String toString() {
