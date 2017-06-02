@@ -91,24 +91,33 @@ $(function() {
 			}).done(function (reply) {
 
 				if(reply != '') {
-					$("#create-movie #title").val(reply.title)
-					$("#create-movie #year").val(reply.release_date.split('-')[0])
-					$("#create-movie #plot").val(reply.overview)
-					$("#create-movie #poster_url").val('https://image.tmdb.org/t/p/w500' + reply.poster_path)
-					$("#create-movie #rating").val((Number(reply.vote_average) * 5.0) / 10.0)
-					$("#create-movie #box_office").val(reply.revenue)
+					$("#create-movie #title").val(reply.title);
+					$("#create-movie #year").val(reply.release_date.split('-')[0]);
+					$("#create-movie #plot").val(reply.overview);
+					$("#create-movie #poster_url").val('https://image.tmdb.org/t/p/w500' + reply.poster_path);
+					$("#create-movie #rating").val((Number(reply.vote_average) * 5.0) / 10.0);
+					$("#create-movie #box_office").val(reply.revenue);
 
-					let genres = ''
+					let genres = '';
 					reply.genres.forEach(function (genre) {
-						genres += genre.name + ', '
-					})
-					$("#create-movie #genres").val(genres)
+						genres += genre.name + ', ';
+					});
+					$("#create-movie #genres").val(genres);
 				}
 			});//ajax
 
 		}
 	});
 
-	
-
+	// Password confirmation
+    $("#password, #repeat-pwd").on("keyup", function() {
+        var btn = $(this).parent().parent().find(":submit");
+        if($("#password").val() != $("#repeat-pwd").val()) {
+            btn.attr("disabled", "disabled");
+            $("#repeat-pwd").parent().toggleClass("has-danger", true);
+        } else {
+            btn.removeAttr("disabled");
+            $("#repeat-pwd").parent().toggleClass("has-danger", false);
+        }
+    });
 });
