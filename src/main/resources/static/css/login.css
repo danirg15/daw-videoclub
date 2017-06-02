@@ -273,7 +273,6 @@ h1 {
     cursor: pointer;
     position: relative;
     display: inline-block;
-    background: 0;
     width: 240px;
     border: 2px solid #e3e3e3;
     padding: 20px 0;
@@ -284,7 +283,9 @@ h1 {
     overflow: hidden;
     -webkit-transition: .3s ease;
     transition: .3s ease;
+    /*background: #5988cb;*/
 }
+
 .card .button-container button span {
     position: relative;
     z-index: 1;
