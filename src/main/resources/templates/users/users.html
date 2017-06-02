@@ -16,15 +16,21 @@
         <h1>Usuarios</h1>
     </div>
 
+    <a href="/users/create" class="btn btn-sm btn-primary float-right">
+        <i class="icon ion-ios-plus align-middle"></i>
+        Nuevo Usuario
+    </a>
+
+    <br/><br/>
 
     <table class="table table-striped table-hover table-bordered">
         <thead class="thead-inverse">
             <tr>
                 <th>ID</th>
+                <th>Usuario</th>
+                <th>Email</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
-                <th>Email</th>
-                <th>Usuario</th>
                 <th></th>
             </tr>
         </thead>
@@ -38,11 +44,11 @@
                 <td th:text="${user.lastName}"></td>
                 <td>
                     <a th:href="@{'/users/' + ${user.id} + '/edit'}" class="btn btn-sm btn-warning align-middle">
-                        <i class="icon ion-edit"></i>
+                        <i class="icon ion-edit align-middle"></i>
                         Editar
                     </a>
-                    <a th:href="@{'/users/' + ${user.id} + '/remove'}" class="btn btn-sm btn-danger align-middle">
-                        <i class="icon ion-ios-close"></i>
+                    <a th:href="@{'/users/' + ${user.id} + '/remove'}" class="btn btn-sm btn-danger ">
+                        <i class="icon ion-ios-close align-middle"></i>
                         Eliminar
                     </a>
                 </td>

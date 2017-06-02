@@ -1,13 +1,11 @@
 - Oculatar acciones segun rol [hecho para ver película, falta admin de usuarios cuando se implemente]
-- Administrar usuarios, (solo para por rol admin)
-- JS guardar valoracion de pelicula y mostrar media
 - Procesar crear usuarios (UserController)
 	+ contraseña/repetir contraseña (comentado, descomentar?)
 - Rellenar BBDD con peliculas
 - thymyleaf error page mapping
-- Cambiar campo "plot" a tipo TEXT
-- Crear usuarios
-- Boton de crear pelicula
-- Indicar los campos obligatorios
+- Pendietne updateUser y storeUser
+- Dibujar estrellas segun valoracion numerica
+- Corregir: al buscar pelicula las peliculas se muestra con un diseno diferente. Aparecen mas estrechas.
 // Datos
 Balanceador: haproxy
+- Despliegue

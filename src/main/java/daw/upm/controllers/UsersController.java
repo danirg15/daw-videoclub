@@ -74,7 +74,7 @@ public class UsersController {
     }
 
 
-    @RequestMapping(value = "/users/{id}/remove", method = RequestMethod.POST)
+    @RequestMapping(value = "/users/{id}/remove", method = RequestMethod.GET)
     public String removeUser(@PathVariable("id") long id) {
         if(this.userRepository.findById(id) == null) {
             return "error";
