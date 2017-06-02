@@ -37,7 +37,7 @@ public class UsersController {
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public ModelAndView showUsers() {
         Iterable<User> users = userRepository.findAll();
-        return new ModelAndView("users/users").addObject("users", users);
+        return new ModelAndView("/users/users").addObject("users", users);
     }
 
 
@@ -47,7 +47,7 @@ public class UsersController {
         User user = this.userRepository.findById(id);
 
         if(user != null) {
-            return new ModelAndView("users/edit-user").addObject("user", user);
+            return new ModelAndView("/users/edit-user").addObject("user", user);
         }
 
         return new ModelAndView("error");
@@ -63,7 +63,7 @@ public class UsersController {
     @Secured({"ROLE_ADMIN"})
     @RequestMapping(value = "/users/create", method = RequestMethod.GET)
     public String createUser(User user) {
-        return "users/create-user";
+        return "/users/create-user";
     }
 
     @Secured({"ROLE_ADMIN"})
@@ -82,7 +82,7 @@ public class UsersController {
 
         this.userRepository.delete(id);
 
-        return "redirect:users/users";
+        return "redirect:/users";
     }
 
 }

@@ -1,5 +1,6 @@
 package daw.upm.models;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,11 +18,19 @@ public class User {
     private long id;
 
     @Column(unique=true)
+    @NotEmpty
     private String username;
 
+    @NotEmpty
     private String firstName;
+
+    @NotEmpty
     private String lastName;
+
+    @NotEmpty
     private String email;
+
+    @NotEmpty
     private String password; //(bcrypt)
 
     @ElementCollection (fetch = FetchType.EAGER)

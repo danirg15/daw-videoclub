@@ -89,3 +89,18 @@ a:hover, a:visited, a:link, a:active
 .navbar-light .navbar-brand, .navbar-light .navbar-toggler {
     color: white;
 }
+
+.thead-inverse th {
+    background-color: #404040;
+}
+
+.btn-secondary {
+    background-color: #404040;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #404040;
+    color: white;
+}
+
