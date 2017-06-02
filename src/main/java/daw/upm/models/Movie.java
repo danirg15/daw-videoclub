@@ -61,29 +61,19 @@ public class Movie {
 
     }
 
-    public Movie(String title,
-                 int year,
-                 String date,
-                 String genre,
-                 String director,
-                 String actors,
-                 String plot,
-                 String poster_url,
-                 double rating,
-                 double box_office) {
-
+    public Movie(String title, int year, String genre, String director, String actors, String plot, String date, String poster_url, String content_url, double rating, double box_office) {
         this.title = title;
         this.year = year;
-        this.date = date;
         this.genre = genre;
         this.director = director;
         this.actors = actors;
         this.plot = plot;
+        this.date = date;
         this.poster_url = poster_url;
+        this.content_url = content_url;
         this.rating = rating;
         this.box_office = box_office;
     }
-
 
     public long getId() {
         return id;
