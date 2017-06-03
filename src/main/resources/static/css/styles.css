@@ -132,3 +132,8 @@ small {
 .navbar-light .navbar-nav .open>.nav-link, .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.open, .navbar-light .navbar-nav .nav-link.active {
     color: #f83b3b;
 }
+
+
+.breadcrumb-item > a {
+    color: #3a3a3a;
+}
