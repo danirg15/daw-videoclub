@@ -1,14 +1,16 @@
 - [Feature] JS guardar valoracion de pelicula y mostrar media
 	El JS está hecho simplemente no funciona con las estrellas actualmente. No obstante, ¿donde guardamos la valoración de usuario?
-- [Feature] ¿Queremos permitir la creacion de usuarios administradores? (No es posible actualmente)
+- [Feature] ¿Queremos permitir la creacion de usuarios administradores? (No es posible actualmente) -> No es neceasrio
 - [Feature] Completar breadcrumbs
+- [Feature] Imprimir estrellas segun rating
 
 - [Change] Hacer el botón de login visible
 
-- [Bug] Los tamaños de las distintas cajas de películas no son consistentes si el tamaño del poster es distinto: http://i.imgur.com/SsbGMt5.png
-- [Bug] El color al pasar por los botones del navbar es negro y poco legible
-- [Bug] Navbar - La sección activa no se actualiza al cambiar de página
-- [Bug] Corregir rating de pelicula debe ser decimal con "," no con "."
+
+- [Fixed] Los tamaños de las distintas cajas de películas no son consistentes si el tamaño del poster es distinto: http://i.imgur.com/SsbGMt5.png
+- [Fixed] El color al pasar por los botones del navbar es negro y poco legible
+- [Fixed] Navbar - La sección activa no se actualiza al cambiar de página
+- [Fixed] Corregir rating de pelicula debe ser decimal con "," no con "."
 
 // Sobre deploy
 Hay que hacerlo

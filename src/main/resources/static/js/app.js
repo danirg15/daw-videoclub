@@ -95,8 +95,10 @@ $(function() {
 					$("#create-movie #year").val(reply.release_date.split('-')[0]);
 					$("#create-movie #plot").val(reply.overview);
 					$("#create-movie #poster_url").val('https://image.tmdb.org/t/p/w500' + reply.poster_path);
-					$("#create-movie #rating").val((Number(reply.vote_average) * 5.0) / 10.0);
 					$("#create-movie #box_office").val(reply.revenue);
+
+					let rating = (Number(reply.vote_average) * 5.0) / 10.0;
+					$("#create-movie #rating").val(String(rating).replace('.', ','));
 
 					let genres = '';
 					reply.genres.forEach(function (genre) {
