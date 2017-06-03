@@ -113,3 +113,12 @@ a:hover, a:visited, a:link, a:active
     background-color: #404040;
     color: white;
 }
+
+.movie-card {
+    height: 35rem;
+    margin-top: 1rem;
+}
+
+small {
+    color: #5f5959;
+}

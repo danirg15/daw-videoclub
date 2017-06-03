@@ -3,10 +3,11 @@
 
         <a th:href="@{'/movies/' + ${movie.id} + '/show'}">
 
-            <div class="card">
+            <div class="card movie-card">
                 <img class="card-img-top img-fluid" th:src="${movie.poster_url}" alt="Card image cap"/>
                 <div class="card-block">
                     <h5 class="card-title" th:text="${movie.title}"></h5>
+                    <small th:text="${movie.actors}"></small>
                 </div>
                 <div class="card-footer">
                     <i class="icon ion-ios-star" aria-hidden="true"></i>
