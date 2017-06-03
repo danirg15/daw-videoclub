@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>DAW - Videoclub - Error</title>
+    <title th:text="${'ViDAW - Error '+status}">ViDAW - Error</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.css" />
     <style type="text/css">@import url(//fonts.googleapis.com/css?family=Roboto:400,700);
@@ -224,7 +224,7 @@
                 </div>
                 <div class="panel-google-plus-tags">
                     <ul>
-                        <li>Error</li>
+                        <li th:text="${'Error ' + status}">Error</li>
                     </ul>
                 </div>
                 <div class="panel-heading">
@@ -233,7 +233,10 @@
                 </div>
                 <div class="panel-body">
                     <p>Parece que has llegado a una página que no existe, o el servidor ha encontrado un error tratando de interpretar
-                        tu petición. Puedes hacer click en el botón de abajo para volver atrás.</p>
+                        tu petición. Puedes hacer click en el botón de abajo para volver atrás. El error devuelto por la aplicación es el siguiente:</p>
+                    <code th:text="${message}">
+
+                    </code>
                 </div>
                 <div class="panel-footer">
                     <a href="javascript:history.back()">
