@@ -113,7 +113,12 @@ public class MoviesController {
     @Secured({"ROLE_USER"})
     @RequestMapping(value="/movies/search", method = RequestMethod.GET)
     public ModelAndView searchMovies(@PathParam("partialTitle") String partialTitle) {
-        Iterable<Movie> movies = this.movieRepository.findByTitleContaining(partialTitle);
+        Iterable<Movie> movies;
+        if(partialTitle != "")
+            movies = this.movieRepository.findByTitleContaining(partialTitle);
+        else
+            movies = this.movieRepository.findAll();
+        
         return new ModelAndView("/movies/movie-list").addObject("movies", movies);
     }
 

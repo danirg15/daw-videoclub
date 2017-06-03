@@ -66,15 +66,13 @@ $(function() {
 
     $searchBox.on("keyup", function(ev) {
 		let movieName = $searchBox.val().trim();
-		if(movieName) {
-            $.ajax({
-                url: "/movies/search",
-                method: "GET",
-                data: {partialTitle: movieName}
-            }).done(function (reply) {
-                $("#movie-list").replaceWith(reply);
-            });
-        }
+		$.ajax({
+			url: "/movies/search",
+			method: "GET",
+			data: {partialTitle: movieName}
+		}).done(function (reply) {
+			$("#movie-list").replaceWith(reply);
+		});
 	});
 
 
