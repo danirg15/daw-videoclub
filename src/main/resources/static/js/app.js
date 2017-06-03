@@ -72,7 +72,7 @@ $(function() {
                 method: "GET",
                 data: {partialTitle: movieName}
             }).done(function (reply) {
-                $("#movie-list").html(reply);
+                $("#movie-list").replaceWith(reply);
             });
         }
 	});
