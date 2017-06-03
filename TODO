@@ -1,5 +1,4 @@
-- [Feature] Dibujar estrellas segun valoracion numerica
-	+ JS guardar valoracion de pelicula y mostrar media
+- [Feature] JS guardar valoracion de pelicula y mostrar media
 	(JS hecho, simplemente no aplicado. No obstante, ¿donde guardamos la valoración de usuario?)
 - [Feature] ¿Queremos permitir la creacion de usuarios administradores? (No es posible actualmente)
 - [Feature] Completar breadcrumbs
@@ -9,7 +8,6 @@
 - [Bug] Los tamaños de las distintas cajas de películas no son consistentes si el tamaño del poster es distinto: http://i.imgur.com/SsbGMt5.png
 - [Bug] El color al pasar por los botones del navbar es negro y poco legible
 - [Bug] Navbar - La sección activa no se actualiza al cambiar de página
-- [Bug] Corregir rating de pelicula debe ser decimal con "," no con "."
 - [Bug] Corregir: al buscar pelicula las peliculas se muestra con un diseno diferente. Aparecen mas estrechas.
 
 // Sobre deploy
