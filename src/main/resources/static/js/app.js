@@ -66,15 +66,13 @@ $(function() {
 
     $searchBox.on("keyup", function(ev) {
 		let movieName = $searchBox.val().trim();
-		if(movieName) {
-            $.ajax({
-                url: "/movies/search",
-                method: "GET",
-                data: {partialTitle: movieName}
-            }).done(function (reply) {
-                $("#movie-list").html(reply);
-            });
-        }
+		$.ajax({
+			url: "/movies/search",
+			method: "GET",
+			data: {partialTitle: movieName}
+		}).done(function (reply) {
+			$("#movie-list").replaceWith(reply);
+		});
 	});
 
 
@@ -91,20 +89,19 @@ $(function() {
 			}).done(function (reply) {
 
 				if(reply != '') {
+					let normalizedRating = ("" + ((Number(reply.vote_average) * 5.0) / 10.0)).replace(".", ",");
 					$("#create-movie #title").val(reply.title);
 					$("#create-movie #year").val(reply.release_date.split('-')[0]);
 					$("#create-movie #plot").val(reply.overview);
 					$("#create-movie #poster_url").val('https://image.tmdb.org/t/p/w500' + reply.poster_path);
 					$("#create-movie #box_office").val(reply.revenue);
+					$("#create-movie #rating").val(normalizedRating);
 
-					let rating = (Number(reply.vote_average) * 5.0) / 10.0;
-					$("#create-movie #rating").val(String(rating).replace('.', ','));
-
-					let genres = '';
+					let genres = [];
 					reply.genres.forEach(function (genre) {
-						genres += genre.name + ', ';
+						genres.push(genre.name);
 					});
-					$("#create-movie #genres").val(genres);
+					$("#create-movie #genres").val(genres.join(", "));
 				}
 			});//ajax
 

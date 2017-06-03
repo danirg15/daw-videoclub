@@ -75,7 +75,7 @@ public class MoviesController {
     }
 
     @Secured({"ROLE_ADMIN"})
-    @RequestMapping(value = "/movies/store", method = RequestMethod.POST)
+    @RequestMapping(value = "/movies/create", method = RequestMethod.POST)
     public String storeMovie(@Valid Movie movie, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "/movies/create-movie";
@@ -113,7 +113,12 @@ public class MoviesController {
     @Secured({"ROLE_USER"})
     @RequestMapping(value="/movies/search", method = RequestMethod.GET)
     public ModelAndView searchMovies(@PathParam("partialTitle") String partialTitle) {
-        Iterable<Movie> movies = this.movieRepository.findByTitleContaining(partialTitle);
+        Iterable<Movie> movies;
+        if(partialTitle != "")
+            movies = this.movieRepository.findByTitleContaining(partialTitle);
+        else
+            movies = this.movieRepository.findAll();
+        
         return new ModelAndView("/movies/movie-list").addObject("movies", movies);
     }
 
@@ -121,11 +126,6 @@ public class MoviesController {
     @RequestMapping(value="/movies/autocomplete", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody String autocompleteMovie(@RequestParam("title") String title) {
         String json = MovieService.movieDetails(title);
-        if(json == null) {
-            return "";
-        }
-        else {
-            return json;
-        }
+        return json == null ? "" : json;
     }
 }

@@ -10,11 +10,11 @@
                     <small th:text="${movie.actors}"></small>
                 </div>
                 <div class="card-footer">
-                    <i class="icon ion-ios-star" aria-hidden="true"></i>
-                    <i class="icon ion-ios-star" aria-hidden="true"></i>
-                    <i class="icon ion-ios-star" aria-hidden="true"></i>
-                    <i class="icon ion-ios-star-half" aria-hidden="true"></i>
-                    <i class="icon ion-ios-star-outline" aria-hidden="true"></i>
+                    <i class="icon"  th:classappend="${movie.rating &lt; 0.5 ? 'ion-ios-star-half' : 'ion-ios-star'}" aria-hidden="true"></i>
+                    <i class="icon"  th:classappend="${movie.rating &gt; 1.5 ? 'ion-ios-star' : movie.rating &gt; 1 ? 'ion-ios-star-half' : 'ion-ios-star-outline' }" aria-hidden="true"></i>
+                    <i class="icon"  th:classappend="${movie.rating &gt; 2.5 ? 'ion-ios-star' : movie.rating &gt; 2 ? 'ion-ios-star-half' : 'ion-ios-star-outline' }" aria-hidden="true"></i>
+                    <i class="icon"  th:classappend="${movie.rating &gt; 3.5 ? 'ion-ios-star' : movie.rating &gt; 3 ? 'ion-ios-star-half' : 'ion-ios-star-outline' }" aria-hidden="true"></i>
+                    <i class="icon"  th:classappend="${movie.rating &gt; 4.5 ? 'ion-ios-star' : movie.rating &gt; 4 ? 'ion-ios-star-half' : 'ion-ios-star-outline' }" aria-hidden="true"></i>
                 </div>
             </div>
 
