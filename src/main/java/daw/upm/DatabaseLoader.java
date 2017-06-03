@@ -10,10 +10,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.sql.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,47 +37,34 @@ public class DatabaseLoader {
             userRepository.save(new User("root", "root", "Root", "Root", "root@localhost.dev", Arrays.asList(adminRoles)));
         }
 
-        //this.seedMoviesDatabase();
+
+        if(movieRepository.count() == 0) {
+            this.seedMoviesDatabase();
+        }
+
     }
 
 
-    private  void seedMoviesDatabase() {
-        String csvFile = System.getProperty("user.dir")+"/src/main/resources/static/data/movies.csv";
-        BufferedReader br = null;
-        String line = "";
-        String cvsSplitBy = ";";
-
+    private void seedMoviesDatabase() {
         try {
+            String sql_file = System.getProperty("user.dir")+"/src/main/resources/static/data/movies.sql";
+            String query = new String(Files.readAllBytes(Paths.get(sql_file)));
 
-            br = new BufferedReader(new FileReader(csvFile));
-            while ((line = br.readLine()) != null) {
-                String[] data = line.split(cvsSplitBy);
+            String url = "jdbc:mysql://localhost:3306/daw-upm";
+            Connection conn = DriverManager.getConnection(url,"daw-upm","daw-upm");
+            Statement stmt = null;
+            stmt = conn.createStatement();
 
+            stmt.executeUpdate(query);
 
-                //Movie m = new Movie(data[10], Integer.parseInt(data[11]), null, data[6], data[5], data[1], data[7], data[8], data[3], Double.parseDouble(data[9]), Double.parseDouble(data[2]));
-
-                Movie m = new Movie("abc", 123, null, "", "", "", "", "link", "", Double.parseDouble(data[9]), Double.parseDouble(data[2]));
-                System.out.print(data[0]);
-
-
-                //System.out.print(m.toString());
-
-                //this.movieRepository.save(m);
-            }
-
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
-
     }
+
 }
