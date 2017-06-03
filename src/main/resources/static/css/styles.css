@@ -113,11 +113,3 @@ a:hover, a:visited, a:link, a:active
     background-color: #404040;
     color: white;
 }
-
-.newuser i {
-    font-size: 0.9rem;
-}
-
-.newuser a {
-    color: #2196F3;
-}
