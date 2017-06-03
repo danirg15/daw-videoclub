@@ -11,11 +11,11 @@
     <div class="row">
         <div class="col-md-10 offset-md-1">
 
-            <form th:action="@{/users/store}" th:object="${user}" method="POST">
+            <form th:action="@{/users/create}" th:object="${user}" method="POST">
                 <fieldset>
                     <legend>Nuevo Usuario</legend>
 
-                    <div th:replace="users/user-form :: form"></div>
+                    <div th:replace="users/user-form :: form(creation='true')"></div>
 
                 </fieldset>
             </form>

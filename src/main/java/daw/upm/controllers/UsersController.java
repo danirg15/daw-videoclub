@@ -3,6 +3,8 @@ package daw.upm.controllers;
 import daw.upm.models.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,7 @@ import daw.upm.models.User;
 import daw.upm.models.UserRepository;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 
 @Controller
 public class UsersController {
@@ -90,8 +93,11 @@ public class UsersController {
     @Secured({"ROLE_ADMIN"})
     @RequestMapping(value = "/users/create", method = RequestMethod.POST)
     public String storeUser(@Valid User user, BindingResult bindingResult) {
-        //TODO
-        return null;
+        GrantedAuthority[] userRoles = {new SimpleGrantedAuthority("ROLE_USER")};
+        user.setRoles(Arrays.asList(userRoles));
+        this.userRepository.save(user);
+
+        return "redirect:/users";
     }
 
 

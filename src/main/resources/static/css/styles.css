@@ -99,6 +99,7 @@ a:hover, a:visited, a:link, a:active
     -webkit-box-shadow: inset 0 -1px 0 #f26e6e !important;
     box-shadow: inset 0 -1px 0 #f26e6e !important;
 }
+
 .thead-inverse th {
     background-color: #404040;
 }
@@ -113,3 +114,10 @@ a:hover, a:visited, a:link, a:active
     color: white;
 }
 
+.newuser i {
+    font-size: 0.9rem;
+}
+
+.newuser a {
+    color: #2196F3;
+}

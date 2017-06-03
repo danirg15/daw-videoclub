@@ -115,4 +115,8 @@ public class User {
     public List<GrantedAuthority> getRoles() {
         return roles;
     }
+
+    public void setRoles(List<GrantedAuthority> nroles) {
+        roles = nroles;
+    }
 }

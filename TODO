@@ -1,13 +1,18 @@
-- Oculatar acciones segun rol [hecho para ver película, falta admin de usuarios cuando se implemente]
-- Procesar crear usuarios (UserController)
-	+ contraseña/repetir contraseña (comentado, descomentar?)
-- Rellenar BBDD con peliculas
-- thymyleaf error page mapping
-- Pendietne updateUser y storeUser
-- Dibujar estrellas segun valoracion numerica
-- Corregir: al buscar pelicula las peliculas se muestra con un diseno diferente. Aparecen mas estrechas.
-// Datos
-Balanceador: haproxy
-- Despliegue
-- Corregir rating de pelicula debe ser decimal con "," no con "."
-- Completar breadcrumbs
+- [Feature] JS guardar valoracion de pelicula y mostrar media
+	El JS está hecho simplemente no funciona con las estrellas actualmente. No obstante, ¿donde guardamos la valoración de usuario?
+- [Feature] Boton de crear pelicula
+	¿Dónde?
+- [Feature] ¿Queremos permitir la creacion de usuarios administradores? (No es posible actualmente)
+
+- [Change] Rellenar BBDD con peliculas
+	¿Necesario? ¿Incluir en DatabaseLoader, maybe?
+- [Change] Cambiar campo "plot" a tipo TEXT
+- [Change] Hacer el botón de login visible
+- Indicar los campos obligatorios
+	¿En qué?
+
+- [Bug] El color al pasar por los botones del navbar es negro y poco legible
+- [Bug] Navbar - La sección activa no se actualiza al cambiar de página
+
+// Sobre deploy
+Load balancing: haproxy
