@@ -75,7 +75,7 @@ public class MoviesController {
     }
 
     @Secured({"ROLE_ADMIN"})
-    @RequestMapping(value = "/movies/store", method = RequestMethod.POST)
+    @RequestMapping(value = "/movies/create", method = RequestMethod.POST)
     public String storeMovie(@Valid Movie movie, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "/movies/create-movie";
