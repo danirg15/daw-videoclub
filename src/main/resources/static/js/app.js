@@ -98,11 +98,11 @@ $(function() {
 					$("#create-movie #rating").val((Number(reply.vote_average) * 5.0) / 10.0);
 					$("#create-movie #box_office").val(reply.revenue);
 
-					let genres = '';
+					let genres = [];
 					reply.genres.forEach(function (genre) {
-						genres += genre.name + ', ';
+						genres.push(genre.name);
 					});
-					$("#create-movie #genres").val(genres);
+					$("#create-movie #genres").val(genres.join(", "));
 				}
 			});//ajax
 

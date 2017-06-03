@@ -121,11 +121,6 @@ public class MoviesController {
     @RequestMapping(value="/movies/autocomplete", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody String autocompleteMovie(@RequestParam("title") String title) {
         String json = MovieService.movieDetails(title);
-        if(json == null) {
-            return "";
-        }
-        else {
-            return json;
-        }
+        return json == null ? "" : json;
     }
 }

@@ -29,7 +29,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         }
 
         if (!new BCryptPasswordEncoder().matches(password, user.getPasswordHash())) {
-            throw new BadCredentialsException("Wrong password");
+            throw new BadCredentialsException("Contraseña inválida");
         }
 
         List<GrantedAuthority> roles = user.getRoles();
