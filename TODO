@@ -1,9 +1,8 @@
 - [Feature] JS guardar valoracion de pelicula y mostrar media
 	El JS está hecho simplemente no funciona con las estrellas actualmente. No obstante, ¿donde guardamos la valoración de usuario?
-- [Feature] ¿Queremos permitir la creacion de usuarios administradores? (No es posible actualmente) -> No es neceasrio
+- [Feature] ¿Queremos permitir la creacion de usuarios administradores? (No es posible actualmente) -> Si
 
 - [Feature] Completar breadcrumbs
-- [Feature] Imprimir estrellas segun rating
 
 - [Change] Hacer el botón de login visible
 
