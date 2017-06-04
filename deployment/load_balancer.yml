@@ -1,0 +1,11 @@
+- hosts: all
+  remote_user: root
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: Installing nginx
+    apt:
+      name: nginx
+      state: latest
+      update_cache: yes

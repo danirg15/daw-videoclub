@@ -1,39 +1,34 @@
-#Load balancer nginex https://dzone.com/articles/load-balancing-apache-tomcat
-#https://www.nginx.com/resources/admin-guide/load-balancer/
-#Ansible https://adamcod.es/2014/09/23/vagrant-ansible-quickstart-tutorial.html
-#Multi machine https://manski.net/2016/09/vagrant-multi-machine-tutorial/
-#mysql config https://rclayton.silvrback.com/quick-mysql-box-using-vagrant-and-ansible
-#deploy https://dzone.com/articles/vagrant
-
 
 BOX_IMAGE = "atorre/daw"
 NODE_COUNT = 1
 
 Vagrant.configure(2) do |config|
 	
+	#Load balancer
 	config.vm.define "load_balancer" do |load_balancer|
 		load_balancer.vm.box = BOX_IMAGE
-		load_balancer.vm.hostname = "loadbalancer"
+		load_balancer.vm.hostname = "load_balancer"
+		#load_balancer.vm.network "forwarded_port", guest: 80, host: 8080
 		load_balancer.vm.network :private_network, ip: "10.0.0.10"
-		load_balancer.vm.network "public_network", ip: "192.168.1.10"
 
 		load_balancer.vm.provision :ansible do |ansible|
 			ansible.playbook = "load_balancer.yml"
 		end
 	end
 
-	# config.vm.define "data_base" do |data_base|
-	# 	data_base.vm.box = BOX_IMAGE
-	# 	data_base.vm.hostname = "db"
-	# 	data_base.vm.network :private_network, ip: "10.10.10.10"
+	#DB server
+	config.vm.define "data_base" do |data_base|
+		data_base.vm.box = BOX_IMAGE
+		data_base.vm.hostname = "data_base"
+		data_base.vm.network :private_network, ip: "10.10.10.10"
 
-	# 	data_base.vm.provision :ansible do |ansible|
-	# 		ansible.playbook = "mysql.yml"
-	# 	end
-	# end
-	  
+		data_base.vm.provision :ansible do |ansible|
+			ansible.playbook = "mysql.yml"
+		end
+	end
+	 
+	#Slaves
 	(1..NODE_COUNT).each do |i|
-		
 		config.vm.define "node#{i}" do |node|
 			node.vm.box = BOX_IMAGE
 			node.vm.hostname = "node#{i}"
@@ -43,7 +38,6 @@ Vagrant.configure(2) do |config|
 				ansible.playbook = "node.yml"
 			end
 		end
-
 	end
 
 end

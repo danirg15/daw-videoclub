@@ -1,0 +1,24 @@
+Arrancar maquinas -> vagrant up --provider virtualbox
+Entrar en maquinas -> vagrant ssh {nombre}
+Cookbooks con Ansible -> https://adamcod.es/2014/09/23/vagrant-ansible-quickstart-tutorial.html
+
+1: Hacer Ansible playbook para BBDD:
+	- Instalar mysql
+	- Crear bbdd "daw-upm"
+	- Crear usuario "daw-upm" con passwd "daw-upm"
+	https://rclayton.silvrback.com/quick-mysql-box-using-vagrant-and-ansible
+
+2: Hacer Ansible playbook para app:
+	- Instalar Tomcat
+	- Copiar app
+	- Configurar puerto 800X 
+	https://dzone.com/articles/vagrant
+
+3: Hacer Ansible playbook para balanceador:
+	- Instalar nginx
+	- Configurar -> https://dzone.com/articles/load-balancing-apache-tomcat
+					"sticky learn" -> https://www.nginx.com/resources/admin-guide/load-balancer/
+
+
+
+
