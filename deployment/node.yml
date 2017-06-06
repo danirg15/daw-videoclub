@@ -2,3 +2,35 @@
   remote_user: root
   become: yes
   become_method: sudo
+
+  tasks:
+  # - name: App packaging...
+  #    local_action: cd .. && mvn clean package
+
+  # - copy:
+  #       src: ../target/*.war
+  #       dest: /opt/tomcat/webapps
+
+  - name: Installing java
+    apt:
+      name: default-jdk
+      state: latest
+      update_cache: yes
+
+  - copy:
+      src: ./conf/tomcat/tomcat.conf
+      dest: /etc/init/tomcat.conf
+
+  - name: Installing Tomcat8
+    shell: |
+      wget http://archive.apache.org/dist/tomcat/tomcat-8/v8.0.23/bin/apache-tomcat-8.0.23.tar.gz
+      sudo mkdir /opt/tomcat
+      sudo tar xvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
+      cd /opt/tomcat
+      sudo chgrp -R vagrant conf
+      sudo chmod g+rwx conf
+      sudo chmod g+r conf/*
+      sudo chown -R vagrant work/ temp/ logs/
+      sudo initctl reload-configuration
+      sudo initctl start tomcat
+

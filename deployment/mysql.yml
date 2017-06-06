@@ -2,3 +2,14 @@
   remote_user: root
   become: yes
   become_method: sudo
+
+  tasks:
+  - name: Installing MySQL
+    apt:
+      name: mysql-server
+      state: latest
+      update_cache: yes
+
+  - name: Restart MySQL
+    service: name=mysql state=restarted
+

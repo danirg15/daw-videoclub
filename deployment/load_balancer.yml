@@ -9,3 +9,13 @@
       name: nginx
       state: latest
       update_cache: yes
+
+  - copy:
+      src: ./conf/nginx/default
+      dest: /etc/nginx/sites-available/default
+
+  - name: Restart nginx
+    service: name=nginx state=restarted
+
+
+    
