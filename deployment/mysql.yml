@@ -2,6 +2,10 @@
   remote_user: root
   become: yes
   become_method: sudo
+  vars:
+    db_name: daw-upm
+    db_user: daw-upm
+    db_passwd: daw-upm
 
   tasks:
   - name: Installing MySQL
@@ -10,6 +14,28 @@
       state: latest
       update_cache: yes
 
+  - copy:
+      src: ./conf/mysql/my.cnf
+      dest: /etc/mysql/my.cnf
+
+  - name: Install the Python MySQLB module
+    apt: 
+      name: python2.7-mysqldb
+      state: latest
+      update_cache: yes
+
   - name: Restart MySQL
     service: name=mysql state=restarted
+
+  - name: Create database
+    mysql_db:
+      name: "{{ db_name }}"
+      state: present
+
+  - mysql_user:
+      name: "{{ db_name }}"
+      password: "{{ db_passwd }}"
+      host: "%"
+      priv: '*.*:ALL,GRANT'
+      state: present
 
