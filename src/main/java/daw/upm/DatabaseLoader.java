@@ -39,7 +39,7 @@ public class DatabaseLoader {
 
 
         if(movieRepository.count() == 0) {
-            this.seedMoviesDatabase();
+            //this.seedMoviesDatabase();
         }
 
     }

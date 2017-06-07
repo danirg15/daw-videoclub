@@ -2,35 +2,31 @@
   remote_user: root
   become: yes
   become_method: sudo
+  vars:
+    app_jar: DAW-videoclub-1.0-SNAPSHOT.jar
+    app_src_path: ../target
+    app_dest_path: /home/vagrant
 
   tasks:
-  # - name: App packaging...
-  #    local_action: cd .. && mvn clean package
+  - copy:
+      src: "{{ app_src_path }}/{{ app_jar }}"
+      dest: "{{ app_dest_path }}"
 
-  # - copy:
-  #       src: ../target/*.war
-  #       dest: /opt/tomcat/webapps
+  - apt_repository:
+      repo: ppa:webupd8team/java
+      state: present
 
-  - name: Installing java
+  - name: apt-get update
     apt:
-      name: default-jdk
-      state: latest
       update_cache: yes
 
-  - copy:
-      src: ./conf/tomcat/tomcat.conf
-      dest: /etc/init/tomcat.conf
-
-  - name: Installing Tomcat8
+  - name: Installing java8
     shell: |
-      wget http://archive.apache.org/dist/tomcat/tomcat-8/v8.0.23/bin/apache-tomcat-8.0.23.tar.gz
-      sudo mkdir /opt/tomcat
-      sudo tar xvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
-      cd /opt/tomcat
-      sudo chgrp -R vagrant conf
-      sudo chmod g+rwx conf
-      sudo chmod g+r conf/*
-      sudo chown -R vagrant work/ temp/ logs/
-      sudo initctl reload-configuration
-      sudo initctl start tomcat
+      echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+      echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
+      sudo apt-get -y install oracle-java8-installer
+      
+  - name: Runing app!!!
+    command: "java -jar {{ app_dest_path }}/{{ app_jar }} 2>&1 "
+
 

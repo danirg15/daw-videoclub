@@ -25,7 +25,7 @@ public class MoviesController {
     @RequestMapping (value = "/movies", method = RequestMethod.GET)
     public ModelAndView showMovies() {
         Iterable<Movie> movies = movieRepository.findAll();
-        return new ModelAndView("/movies/movies").addObject("movies", movies);
+        return new ModelAndView("movies/movies").addObject("movies", movies);
     }
 
     @Secured({"ROLE_USER"})
@@ -34,7 +34,7 @@ public class MoviesController {
         Movie movie = this.movieRepository.findById(id);
 
         if(movie != null) {
-            return new ModelAndView("/movies/movie").addObject("movie", movie);
+            return new ModelAndView("movies/movie").addObject("movie", movie);
         }
 
         return new ModelAndView("error");
@@ -46,7 +46,7 @@ public class MoviesController {
         Movie movie = this.movieRepository.findById(id);
 
         if(movie != null) {
-            return new ModelAndView("/movies/edit-movie").addObject("movie", movie);
+            return new ModelAndView("movies/edit-movie").addObject("movie", movie);
         }
 
         return new ModelAndView("error");
@@ -56,7 +56,7 @@ public class MoviesController {
     @RequestMapping(value = "/movies/{id}/update", method = RequestMethod.POST)
     public String updateMovie(@PathVariable("id") long id, @Valid Movie movie, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "/movies/edit-movie";
+            return "movies/edit-movie";
         }
 
         if(this.movieRepository.findById(id) == null) {
@@ -78,7 +78,7 @@ public class MoviesController {
     @RequestMapping(value = "/movies/create", method = RequestMethod.POST)
     public String storeMovie(@Valid Movie movie, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "/movies/create-movie";
+            return "movies/create-movie";
         }
 
         this.movieRepository.save(movie);
@@ -104,7 +104,7 @@ public class MoviesController {
         Movie movie = this.movieRepository.findById(id);
 
         if(movie != null) {
-            return new ModelAndView("/movies/display-movie").addObject("movie", movie);
+            return new ModelAndView("movies/display-movie").addObject("movie", movie);
         }
 
         return new ModelAndView("error");
@@ -119,7 +119,7 @@ public class MoviesController {
         else
             movies = this.movieRepository.findAll();
         
-        return new ModelAndView("/movies/movie-list").addObject("movies", movies);
+        return new ModelAndView("movies/movie-list").addObject("movies", movies);
     }
 
     @Secured({"ROLE_USER"})
