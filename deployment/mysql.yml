@@ -38,4 +38,14 @@
       host: "%"
       priv: '*.*:ALL,GRANT'
       state: present
+  
+  - copy:
+      src: ./movies.sql
+      dest: /tmp
+
+  - name: Seed database
+    mysql_db:
+      name: "{{ db_name }}"
+      state: import
+      target: /tmp/movies.sql
 
