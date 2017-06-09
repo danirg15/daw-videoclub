@@ -40,7 +40,7 @@
       state: present
   
   - copy:
-      src: ./movies.sql
+      src: ./seed/movies.sql
       dest: /tmp
 
   - name: Seed database

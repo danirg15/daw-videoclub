@@ -26,7 +26,7 @@
       echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
       sudo apt-get -y install oracle-java8-installer
       
-  - name: Runing app!!!
-    command: "java -jar {{ app_dest_path }}/{{ app_jar }} 2>&1 "
-
-
+  # - name: Runing app!!!
+  #   shell: "java -jar {{ app_dest_path }}/{{ app_jar }} > /dev/null &"
+    #"java -jar {{ app_dest_path }}/{{ app_jar }} > /dev/null 2>&1 &"
+      
